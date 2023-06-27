@@ -9,14 +9,14 @@ namespace private_project
     public class item
     {
         public string name;
-        public int metal;
-        public int darkmatter;
+        public int price;
+        public int power ;
         public string script;
-        public void InitialItem(string name,int metal,int darkmatter,string script)
+        public void InitialItem(string name,int price,int power,string script)
         {
             this.name = name;
-            this.metal = metal;
-            this.darkmatter = darkmatter;
+            this.price = price;
+            this.power = power;
             this.script = script;
         }
     }
