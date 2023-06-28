@@ -12,7 +12,7 @@ namespace private_project
         //Ui 출력함수
         public void MakeUI()
         {
-            Console.SetWindowSize(125, 60);
+            Console.SetWindowSize(125, 55);
             Console.SetCursorPosition(0, 0);
             Console.WriteLine("┏───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┓");
             Console.WriteLine("┃                                                                                                                       ┃");
@@ -82,6 +82,19 @@ namespace private_project
 
         }
 
+        public void Synopsis ()
+        {
+            Console.SetCursorPosition(10, 6);
+            Console.Write("2200년 천재과학자 알버트는 타임머신 개발에 성공했다.");
+            Console.SetCursorPosition(10, 7);
+            Console.Write("알버트은 현대에 모든 공룡을 복원하기위해 공룡알을 수집하는 임무를 진행하기로 결정하였다.");
+            Console.SetCursorPosition(10, 8);
+            Console.Write("부푼 꿈을 안고 타임머신에 몸을 맡겨 백악기로 넘어가던 중 타임머신이 흔들리기 시작했다. ");
+            Console.SetCursorPosition(10, 9);
+            Console.Write("시공간 폭풍을 만난것이다.폭풍을 뚫고 백악기로 도착했지만  착륙이 불안정했는지 타임머신의 부품들이 여기저기로 흩어져버렸다.");
+            Console.SetCursorPosition(10, 10);
+            Console.Write("무시무시한 공룡들이 사는 세상에서 알버트는 모든 공룡알과 부품을 수집해서 현실로 돌아갈수있을까?");
+        }
         public void Printstate(Player albert)
         {
             Console.SetCursorPosition(80, 42);
@@ -99,32 +112,24 @@ namespace private_project
             Console.SetCursorPosition(80, 54);
             Console.Write("현재화석:{0}", albert.fossils);
 
-            Console.SetCursorPosition(100, 42);
-            Console.WriteLine("@@@@@@@@@@@@@@@@@@@@");
-            Console.SetCursorPosition(100, 43);
-            Console.WriteLine("@@@@@@@@@@@@@@@@@@@@");
-            Console.SetCursorPosition(100, 44); 
-            Console.WriteLine("@@@@@@@@@#@@@@@@@@@@");
-            Console.SetCursorPosition(100, 45); 
-            Console.WriteLine("@@@@@@@#,..@@@@@@@@@");
-            Console.SetCursorPosition(100, 46); 
-            Console.WriteLine("@@@@@@@=;!*$@@@@@@@@");
-            Console.SetCursorPosition(100, 47); 
-            Console.WriteLine("@@@@@@@;!,=$@@@@@@@@");
-            Console.SetCursorPosition(100, 48); 
-            Console.WriteLine("@@@@@@@#:~*@###@@@@@");
-            Console.SetCursorPosition(100, 49); 
-            Console.WriteLine("@@@@@$ ;: ;:: ;@@@@@");
-            Console.SetCursorPosition(100, 50); 
-            Console.WriteLine("@@@@   :!..,-:!#@@@@");
-            Console.SetCursorPosition(100, 51); 
-            Console.WriteLine("@@@#...~,-~.....@@@@");
-            Console.SetCursorPosition(100, 52); 
-            Console.WriteLine("@@@@@###########@@@@");
-            Console.SetCursorPosition(100, 53); 
-            Console.WriteLine("@@@@@@@@@@@@@@@@@@@@");
-            Console.SetCursorPosition(100, 54); 
-            Console.WriteLine("@@@@@@@@@@@@@@@@@@@@");
+            Console.SetCursorPosition(98, 44);
+            Console.WriteLine("        -''--.        ");
+            Console.SetCursorPosition(98, 45);
+            Console.WriteLine("     _`>   `\\.-'<     ");
+            Console.SetCursorPosition(98, 46);
+            Console.WriteLine("  _.'     _     '._   ");
+            Console.SetCursorPosition(98, 47);
+            Console.WriteLine(".'   _.='   '=._   '. ");
+            Console.SetCursorPosition(98, 48);
+            Console.WriteLine(">_   / /_\\ /_\\ \\   _< ");
+            Console.SetCursorPosition(98, 49);
+            Console.WriteLine("  / (  \\o/\\o/  ) \\   ");
+            Console.SetCursorPosition(98, 50);
+            Console.WriteLine("  >._\\ .-,_)-. /_.<   ");
+            Console.SetCursorPosition(98, 51);
+            Console.WriteLine("      /__/ \\__\\       ");
+            Console.SetCursorPosition(98, 52);
+            Console.WriteLine("        '---'         ");
 
         }
         public void PrintStage(int stage, int round)
@@ -165,9 +170,45 @@ namespace private_project
             Console.WriteLine("     88  .8D   .88.   88  V888 `8b  d8' db   8D 88   88 88b  d88 88 `88.    ");
             Console.SetCursorPosition(22, 17);
             Console.WriteLine("     Y8888D' Y888888P VP   V8P  `Y88P'  `8888Y' YP   YP ~Y8888P' 88   YD    ");
-
-            Console.SetCursorPosition(45, 31);
+            Console.SetCursorPosition(45, 33);
             Console.WriteLine(" Press The Key To Start!");
+
+            Console.SetCursorPosition(10,19);
+            Console.WriteLine("             $#########  ");
+            Console.SetCursorPosition(10, 20);
+            Console.WriteLine("            *#;;########,");
+            Console.SetCursorPosition(10, 21);
+            Console.WriteLine("            *#==########,");
+            Console.SetCursorPosition(10, 22);
+            Console.WriteLine("            *###########,");
+            Console.SetCursorPosition(10, 23);
+            Console.WriteLine("            *#####=*****,");
+            Console.SetCursorPosition(10, 24);
+            Console.WriteLine("            *#####=**;   ");
+            Console.SetCursorPosition(10, 25);
+            Console.WriteLine("           ,=####****;   ");
+            Console.SetCursorPosition(10, 26);
+            Console.WriteLine("*,     ,,########,,      ");
+            Console.SetCursorPosition(10, 27);
+            Console.WriteLine("*#=;  ;##########,=      ");
+            Console.SetCursorPosition(10, 28);
+            Console.WriteLine("*##=,,=########## ;      ");
+            Console.SetCursorPosition(10, 29);
+            Console.WriteLine("*################        ");
+            Console.SetCursorPosition(10, 30);
+            Console.WriteLine("  ;=##########;~         ");
+            Console.SetCursorPosition(10, 31);
+            Console.WriteLine("    ,#######$-.          ");
+            Console.SetCursorPosition(10, 32);
+            Console.WriteLine("     *$##$*$=.           ");
+            Console.SetCursorPosition(10, 33);
+            Console.WriteLine("      *#:, ,*.           ");
+            Console.SetCursorPosition(10, 34);
+            Console.WriteLine("      * *,   **,         ");
+            Console.SetCursorPosition(10, 35);
+            Console.WriteLine("      ; *,   ; *,        ");
+
+           
         }
 
 
@@ -243,21 +284,111 @@ namespace private_project
             Console.WriteLine("알버트 박사는 타임머신을 타고 현대로 돌아갑니다....");
         }
 
-
-        public void PrintRapter()
+        public void PrintVolcano()
         {
-            Console.WriteLine("        _             __......___                            ");
-            Console.WriteLine("    _-~~ɒ=._       _-~           '-._                        ");
-            Console.WriteLine("  >===___ ) ~-.__.-   _       .--.   ~----------_-.-.-=====--");
-            Console.WriteLine("          ~-._       ( { \\\\    )  __...--'''               ");
-            Console.WriteLine("              ~-=-~~~~//~~~-\\  _~ _=                        ");
-            Console.WriteLine("                      \\   \\ _~-=-|                         ");
-            Console.WriteLine("                     }~   ( .=   /_|                         ");
-            Console.WriteLine("                          ||      }|                         ");
-            Console.WriteLine("                          ||       //                        ");
-            Console.WriteLine("                          {{        //_                      ");
-            Console.WriteLine("                   =    _\\          '~'='                   ");
-            Console.WriteLine("                       '~~                                   ");
+            Console.SetCursorPosition(3, 5);
+            Console.WriteLine("               (   (( . : (    .)   ) :  )                 ");
+            Console.SetCursorPosition(3, 6);
+            Console.WriteLine("                 (   ( :  .  :    :  )  ))                 ");
+            Console.SetCursorPosition(3, 7);
+            Console.WriteLine("                  ( ( ( (  .  :  . . ) )                   ");
+            Console.SetCursorPosition(3, 8);
+            Console.WriteLine("                   ( ( : :  :  )   )  )                    ");
+            Console.SetCursorPosition(3, 9);
+            Console.WriteLine("                    ( :(   .   .  ) .'                     ");
+            Console.SetCursorPosition(3, 10);
+            Console.WriteLine("                     '. :(   :    )                        ");
+            Console.SetCursorPosition(3, 11);
+            Console.WriteLine("                       (   :  . )  )                       ");
+            Console.SetCursorPosition(3, 12);
+            Console.WriteLine("                        ')   :   #@                        ");
+            Console.SetCursorPosition(3, 13);
+            Console.WriteLine("                       #',### \" #@                         ");
+            Console.SetCursorPosition(3, 14);
+            Console.WriteLine("                      #/ @'#~@#~/\\                         ");
+            Console.SetCursorPosition(3, 15);
+            Console.WriteLine("                    ##  @@# @##@  `..@,                    ");
+            Console.SetCursorPosition(3, 16);
+            Console.WriteLine("                  @#/  #@#   _##     `\\                    ");
+            Console.SetCursorPosition(3, 17);
+            Console.WriteLine("                @##;  `#~._.' ##@      \\_                  ");
+            Console.SetCursorPosition(3, 18);
+            Console.WriteLine("              .-#/           @#@#@--,_,--\\                 ");
+            Console.SetCursorPosition(3, 19);
+            Console.WriteLine("             / `@#@..,     .~###'         `~.              ");
+            Console.SetCursorPosition(3, 20);
+            Console.WriteLine("           _/         `-.-' #@####@          \\             ");
+            Console.SetCursorPosition(3, 21);
+            Console.WriteLine("        __/     &^^       ^#^##~##&&&   %     \\_           ");
+            Console.SetCursorPosition(3, 22);
+            Console.WriteLine("       /       && ^^      @#^##@#%%#@&&&&  ^    \\          ");
+            Console.SetCursorPosition(3, 23);
+            Console.WriteLine("     ~/         &&&    ^^^   ^^   &&&  %%% ^^^   `~._      ");
+            Console.SetCursorPosition(3, 24);
+            Console.WriteLine("  .-'   ^^    %%%. &&   ___^     &&   && &&   ^^     \\     ");
+            Console.SetCursorPosition(3, 25);
+            Console.WriteLine(" /    ^^^ ___&&& X & && |n|   ^ ___ %____&& . ^^^^^   `~.  ");
+            Console.SetCursorPosition(3, 26);
+            Console.WriteLine("          |M|       ---- .  ___.|n| /\\___\\  X              ");
+            Console.SetCursorPosition(3, 27);
+            Console.WriteLine("                    |mm| X  |n|X    ||___|                 ");
+
+            Console.SetCursorPosition(55, 8);
+            Console.WriteLine("       /|                                                 ");
+            Console.SetCursorPosition(55, 9);
+            Console.WriteLine("      / |                                                 ");
+            Console.SetCursorPosition(55, 10);
+            Console.WriteLine("     /  /                                                 ");
+            Console.SetCursorPosition(55, 11);
+            Console.WriteLine("    |   |                                                 ");
+            Console.SetCursorPosition(55, 12);
+            Console.WriteLine("   /    |                                                 ");
+            Console.SetCursorPosition(55, 13);
+            Console.WriteLine("   |    \\_                                                ");
+            Console.SetCursorPosition(55, 14);
+            Console.WriteLine("   |      \\__                                             ");
+            Console.SetCursorPosition(55, 15);
+            Console.WriteLine("   \\       __\\_______                                     ");
+            Console.SetCursorPosition(55, 16);
+            Console.WriteLine("    \\                 \\_                                  ");
+            Console.SetCursorPosition(55, 17);
+            Console.WriteLine("    | /                 \\                                 ");
+            Console.SetCursorPosition(55, 18);
+            Console.WriteLine("    \\/                  \\                                ");
+            Console.SetCursorPosition(55, 19);
+            Console.WriteLine("     |                    |                               ");
+            Console.SetCursorPosition(55, 20);
+            Console.WriteLine("     \\                   \\|                               ");
+            Console.SetCursorPosition(55, 21);
+            Console.WriteLine("     |                    \\                               ");
+            Console.SetCursorPosition(55, 22);
+            Console.WriteLine("     \\                     |                              ");
+            Console.SetCursorPosition(55, 23);
+            Console.WriteLine("     /\\    \\_               \\                             ");
+            Console.SetCursorPosition(55, 24);
+            Console.WriteLine("    / |      \\__ (   )       \\                            ");
+            Console.SetCursorPosition(55, 25);
+            Console.WriteLine("   /  \\      / |\\  /       __\\____                       ");
+            Console.SetCursorPosition(55, 26);
+            Console.WriteLine("   |  ,     |  /\\ \\ \\__    |       \\_                     ");
+            Console.SetCursorPosition(55, 27);
+            Console.WriteLine("   \\_/|\\___/   \\   \\}}}\\__|  (@)     )                    ");
+            Console.SetCursorPosition(55, 28);
+            Console.WriteLine("    \\)\\)\\)      \\_\\---\\   \\|       \\ \\                    ");
+            Console.SetCursorPosition(55, 29);
+            Console.WriteLine("                  \\>\\>\\>   \\   /\\__o_o)                   ");
+            Console.SetCursorPosition(55, 30);
+            Console.WriteLine("                            | /  VVVVV                    ");
+            Console.SetCursorPosition(55, 31);
+            Console.WriteLine("                            \\ \\    \\           _____ /     ");
+            Console.SetCursorPosition(55, 32);
+            Console.WriteLine("                             \\ \\MMMMM          |  O O|      ");
+            Console.SetCursorPosition(55, 33);
+            Console.WriteLine("                              \\______/         /___|_|/\\_   ");
+            Console.SetCursorPosition(55, 34);
+            Console.WriteLine("                                           ==( |          |   ");
+            Console.SetCursorPosition(55, 35);
+            Console.WriteLine("                                              (o)====(o)*/    ");
         }
     }
 }

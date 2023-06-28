@@ -17,8 +17,8 @@ namespace private_project
         public int luck;
         public int fossils;
         public int eggCount;
-        
-        public void IntiailizePlayer(string name, string weaponname,int weaponpower, int maxHp, int hp,int luck, int fossils ,int eggcount)
+
+        public void IntiailizePlayer(string name, string weaponname, int weaponpower, int maxHp, int hp, int luck, int fossils, int eggcount)
         {
             this.name = name;
             this.weaponName = weaponname;
@@ -55,6 +55,36 @@ namespace private_project
             Console.SetCursorPosition(30, 30);
             Console.WriteLine("{0}");
 
+        }
+
+        public void PrintPlayer()
+        {
+            Console.SetCursorPosition(70, 15);
+            Console.WriteLine("            ,---,_          ,    ");
+            Console.SetCursorPosition(70, 16); 
+            Console.WriteLine("          _>   `'-.  .--'/       ");
+            Console.SetCursorPosition(70, 17); 
+            Console.WriteLine("     .--'` ._      `/   <_       ");
+            Console.SetCursorPosition(70, 18); 
+            Console.WriteLine("      >,-' ._'.. ..__ . ' '-.    ");
+            Console.SetCursorPosition(70, 19); 
+            Console.WriteLine("   .-'   .'`         `'.     '.  ");
+            Console.SetCursorPosition(70, 20); 
+            Console.WriteLine("    >   / >`-.     .-'< \\ , '._\\ ");
+            Console.SetCursorPosition(70, 21); 
+            Console.WriteLine("   /    ; '-._>   <_.-' ;  '._>  ");
+            Console.SetCursorPosition(70, 22); 
+            Console.WriteLine("   `>  ,/  /___\\ /___\\  \\_  /    ");
+            Console.SetCursorPosition(70, 23); 
+            Console.WriteLine("   `.-|(|  \\o_/  \\o_/   |)|`     ");
+            Console.SetCursorPosition(70, 24); 
+            Console.WriteLine("        \\;        \\      ;/      ");
+            Console.SetCursorPosition(70, 25); 
+            Console.WriteLine("         \\  .-,   )-.  /         ");
+            Console.SetCursorPosition(70, 26); 
+            Console.WriteLine("          /`  .'-'.  `\\          ");
+            Console.SetCursorPosition(70, 27); 
+            Console.WriteLine("         ;_.-`.___.'-.;          ");
         }
     }
 }

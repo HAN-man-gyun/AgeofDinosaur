@@ -56,16 +56,13 @@ namespace private_project
             egg1.InitialEgg("기간토노사우루스의 알");
             eggs.Add(egg10);
 
-
-
-
             //공룡 초기화
             List<dinosaur> dinosaurs = new List<dinosaur>();
             dinosaur normal1 = new dinosaur();
             normal1.InitDinosaur("트리케라톱스", 200, 200, 30, 10, "초식공룡", 50);
             dinosaurs.Add(normal1);
             dinosaur normal2 = new dinosaur();
-            normal2.InitDinosaur("브라키오사오루스", 200, 200, 40, 5, "초식공룡", 50);
+            normal2.InitDinosaur("브라키오사우루스", 200, 200, 40, 5, "초식공룡", 50);
             dinosaurs.Add(normal2);
             dinosaur boss1 = new dinosaur();
             boss1.InitDinosaur("벨로시랩터", 300, 300, 30, 40, "육식공룡", 500);
@@ -102,8 +99,6 @@ namespace private_project
             //shop객체생성
             Shop shop = new Shop();
 
-
-
             //랜덤객체 생성
             Random rnd = new Random();
             //스테이지 랜덤값을 담을 temp변수
@@ -114,7 +109,6 @@ namespace private_project
             //원주민 랜덤인덱스 변수
             int tempPrimitive;
            
-
             //start screen 출력
             //UI출력
             UI1.MakeUI();
@@ -122,22 +116,25 @@ namespace private_project
             ConsoleKeyInfo input = Console.ReadKey();
             Console.Clear();
             Task.Delay(1000).Wait();
-            
+
+           
+
             //UI출력
             UI1.MakeUI();
+            
 
             while (true)
             {
-                temp = rnd.Next(1, 50);
+                temp = rnd.Next(0, 101);
                 tempPrimitive = rnd.Next(0, 2);
                 //기본스크립트 출력
                 UI1.PrintRoundStart();
                 UI1.PrintStage(stage, round);
                 UI1.Printstate(albert);
                 Task.Delay(1000).Wait();
-                Console.SetCursorPosition(70, 5);
+                Console.SetCursorPosition(60, 5);
                 Console.Write("현재 albert의 에그갯수 {0}", albert.eggCount);
-                Console.SetCursorPosition(70, 6);
+                Console.SetCursorPosition(60, 6);
                 Console.Write("현재 temp {0}", temp);
                 Task.Delay(1000).Wait();
                 if (round != 1 && albert.eggCount % 3 != 0)
@@ -254,7 +251,47 @@ namespace private_project
             UI1.MakeUI();
             UI1.PrintStage(stage, round);
             UI1.Printstate(albert);
-            if (array.name =="벨로시랩터" || array.name =="티라노사우르스" || array.name =="기가토노사우루스")
+            if (array.name == "트리케라톱스")
+            {
+                array.PrintTri();
+            }
+            else if(array.name == "브라키오사우루스")
+            {
+                array.PrintBra();
+            }
+            else if(array.name == "벨로시랩터")
+            {
+                array.PrintRapter();
+            }
+            else if(array.name == "파라사우롤로푸스")
+            {
+                array.PrintPhy();
+            }
+            else if(array.name == "스테고사우루스")
+            {
+                array.PrintStego();
+            }
+            else if(array.name == "티라노사우루스")
+            {
+                array.PrintTrano();
+            }
+            else if(array.name == "알로사우루스")
+            {
+                array.PrintAlo();
+            }
+            else if(array.name == "안킬로사우루스")
+            {
+                array.PrintAnkilo();
+            }
+            else if(array.name == "프테라노돈")
+            {
+                array.PrintPtera();
+            }
+            else if(array.name == "기가노토사우루스")
+            {
+                array.PrintGiga();
+            }
+            if (array.name =="벨로시랩터" || array.name =="티라노사우루스" || array.name =="기가노토사우루스")
             {
                 Console.SetCursorPosition(4, 43);
                 Console.Write("갑자기 지축이 흔들린다.무언가 엄청난것들이 오고있다!");
@@ -266,15 +303,56 @@ namespace private_project
             {
                 Console.SetCursorPosition(4, 43);
                 Console.WriteLine("풀숲에서 갑자기 {0} {1}가 나타났다!!!", array.type, array.name);
+                Task.Delay(1000).Wait();
             }
 
             Task.Delay(1000).Wait();
             while (true)
             {
-
                 UI1.MakeUI();
                 UI1.PrintStage(stage, round);
                 UI1.Printstate(albert);
+                albert.PrintPlayer();
+                if (array.name == "트리케라톱스")
+                {
+                    array.PrintTri();
+                }
+                else if (array.name == "브라키오사우루스")
+                {
+                    array.PrintBra();
+                }
+                else if (array.name == "벨로시랩터")
+                {
+                    array.PrintRapter();
+                }
+                else if (array.name == "파라사우롤로푸스")
+                {
+                    array.PrintPhy();
+                }
+                else if (array.name == "스테고사우루스")
+                {
+                    array.PrintStego();
+                }
+                else if (array.name == "티라노사우루스")
+                {
+                    array.PrintTrano();
+                }
+                else if (array.name == "알로사우루스")
+                {
+                    array.PrintAlo();
+                }
+                else if (array.name == "안킬로사우루스")
+                {
+                    array.PrintAnkilo();
+                }
+                else if (array.name == "프테라노돈")
+                {
+                    array.PrintPtera();
+                }
+                else if (array.name == "기가노토사우루스")
+                {
+                    array.PrintGiga();
+                }
                 if (albert.hp <= 0)
                 {
                     alive = false;
@@ -328,14 +406,18 @@ namespace private_project
             UI1.MakeUI();
             UI1.PrintStage(stage, round);
             UI1.Printstate(albert);
+            albert.PrintPlayer();
             Console.SetCursorPosition(4, 43);
             Console.WriteLine("풀숲에서 갑자기 {0}이 나타났다!!!", primi.name);
             Task.Delay(1000).Wait();
             while (true)
             {
+                
                 UI1.MakeUI();
                 UI1.PrintStage(stage, round);
                 UI1.Printstate(albert);
+                albert.PrintPlayer();
+                primi.PrintPrimi1();
                 if (albert.hp <= 0)
                 {
                     alive = false;
@@ -390,6 +472,7 @@ namespace private_project
             UI1.MakeUI();
             UI1.PrintStage(stage, round);
             UI1.Printstate(albert);
+            primi.PrintPrimi2();
             Console.SetCursorPosition(4, 43);
             Console.WriteLine("풀숲을 거닐던중 낯선 원시인들을 만났다.");
             Task.Delay(600).Wait();
@@ -409,9 +492,10 @@ namespace private_project
         static void MeetDisaster(ref Player albert, ref UI UI1, int stage, int round)
         {
             Console.Clear();
+            
             UI1.MakeUI();
             UI1.PrintStage(stage, round);
-            UI1.Printstate(albert);
+            UI1.PrintVolcano();
             Console.SetCursorPosition(4, 43);
             Console.WriteLine("갑자기 땅이 흔들리기 시작했다...");
             Task.Delay(600).Wait();
@@ -426,7 +510,5 @@ namespace private_project
             Console.WriteLine("HP가 50 감소하였습니다.....");
             ConsoleKeyInfo input = Console.ReadKey();
         }
-
-
     }
 }
