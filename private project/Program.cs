@@ -21,7 +21,7 @@ namespace private_project
             UI UI1 = new UI();
             //플레이어 생성,초기화
             Player albert = new Player();
-            albert.IntiailizePlayer("알버트", "주먹도끼", 20, 400, 300, 10, 150, 9);
+            albert.IntiailizePlayer("알버트", "주먹도끼", 20, 400, 300, 10, 150, 0);
 
            
 
@@ -109,22 +109,13 @@ namespace private_project
                 UI1.PrintRoundStart();
                 UI1.PrintStage(stage, round);
                 UI1.Printstate(albert);
-                Task.Delay(1000).Wait();
-                Console.SetCursorPosition(60, 5);
-                Console.Write("현재 albert의 에그갯수 {0}", albert.eggCount);
-                Console.SetCursorPosition(60, 6);
-                Console.Write("현재 temp {0}", temp);
-                
+                UI1.PrintDesert();
                 Task.Delay(1000).Wait();
                 if (round != 1 && albert.eggCount % 3 != 0)
                 {// 라운드가 1이 아니면서 eggCount가 3의 배수가 아니라면
                     if (temp <= 50)
                     {
                         tempDinoBattle = rnd.Next(0, 101);
-                        Console.SetCursorPosition(60, 7);
-                        Console.Write("현재 tempDino {0}", tempDinoBattle);
-                        Console.SetCursorPosition(60, 8);
-                        Console.Write("현재 test1");
                         Task.Delay(1000).Wait();
                         live = BattleDino(dinosaurs[dinoIdx], ref albert, ref UI1, stage, round, tempDinoBattle);
                         round++;
@@ -168,6 +159,10 @@ namespace private_project
                 }
                 else if (round == 1)//라운드가 1이라면
                 {
+                    Console.Clear();
+                    UI1.MakeUI();
+                    UI1.PrintStage(stage, round);
+                    UI1.Printstate(albert);
                     //상점 구현
                     round++;
                     shop.InitializeItem();
@@ -232,6 +227,7 @@ namespace private_project
             UI1.MakeUI();
             UI1.PrintStage(stage, round);
             UI1.Printstate(albert);
+            UI1.PrintDesert();
             PrintBattleDinosaur(array);
             if (array.name =="벨로시랩터" || array.name =="티라노사우루스" || array.name =="기가노토사우루스")
             {
@@ -256,6 +252,7 @@ namespace private_project
                 UI1.MakeUI();
                 UI1.PrintStage(stage, round);
                 UI1.Printstate(albert);
+                UI1.PrintDesert();
                 albert.PrintPlayer();
                 BattleFirstScript(array);
                 PrintBattleCursorPosition();
@@ -298,13 +295,17 @@ namespace private_project
                             {
                                 if (Console.CursorTop == 46)
                                 {
-                                    if (tempDinoBattle <= array.friendship)
+                                    if (tempDinoBattle >= array.friendship)
                                     {
                                         Console.Clear();
                                         UI1.MakeUI();
                                         UI1.PrintStage(stage, round);
                                         UI1.Printstate(albert);
+                                        UI1.PrintDesert();
                                         Console.SetCursorPosition(4,43);
+                                        Console.WriteLine("{0}가 한눈을 팔고있을때 재빨리 움직여야한다...",array.name);
+                                        Task.Delay(1000).Wait();
+                                        Console.SetCursorPosition(4, 45);
                                         Console.WriteLine("휴 다행히 무사히 알을 가지고 도망쳤다...");
                                         albert.eggCount++;
                                         check = true;
@@ -317,6 +318,7 @@ namespace private_project
                                         UI1.MakeUI();
                                         UI1.PrintStage(stage, round);
                                         UI1.Printstate(albert);
+                                        UI1.PrintDesert();
                                         Console.SetCursorPosition(4, 43);
                                         Console.WriteLine("이런! 경계심이 강해서 들켜버렸다! 전투가 불가피하다...");
                                         albert.eggCount++;
@@ -337,7 +339,7 @@ namespace private_project
                                                 UI1.MakeUI();
                                                 UI1.PrintStage(stage, round);
                                                 UI1.Printstate(albert);
-                                                
+                                                UI1.PrintDesert();
                                                 Console.SetCursorPosition(4, 43);
                                                 Drawleap();
                                                 Console.WriteLine("캣잎향이 은은하게 풍깁니다. {0}의 경계심이 풀어졌습니다.", array.name);
@@ -349,6 +351,7 @@ namespace private_project
                                                 UI1.PrintStage(stage, round);
                                                 UI1.Printstate(albert);
                                                 albert.PrintPlayer();
+                                                UI1.PrintDesert();
                                                 BattleFirstScript(array);
                                                 PrintBattleCursorPosition();
                                                 Console.SetCursorPosition(70, 46);
@@ -362,6 +365,7 @@ namespace private_project
                                         UI1.MakeUI();
                                         UI1.PrintStage(stage, round);
                                         UI1.Printstate(albert);
+                                        UI1.PrintDesert();
                                         Console.SetCursorPosition(4, 43);
                                         Console.WriteLine("공룡캣닢이 인벤토리에 없습니다.");
                                         ConsoleKeyInfo input3 = Console.ReadKey();
@@ -370,6 +374,7 @@ namespace private_project
                                         UI1.PrintStage(stage, round);
                                         UI1.Printstate(albert);
                                         albert.PrintPlayer();
+                                        UI1.PrintDesert();
                                         BattleFirstScript(array);
                                         PrintBattleCursorPosition();
                                         Console.SetCursorPosition(70, 46);
@@ -388,6 +393,7 @@ namespace private_project
                                                 UI1.MakeUI();
                                                 UI1.PrintStage(stage, round);
                                                 UI1.Printstate(albert);
+                                                UI1.PrintDesert();
                                                 Console.SetCursorPosition(4, 43);
                                                 Console.WriteLine(" 팔팔한 생선을먹고 HP를 100회복했습니다!");
                                                 albert.playerInventory.RemoveAt(i);
@@ -398,6 +404,7 @@ namespace private_project
                                                 UI1.PrintStage(stage, round);
                                                 UI1.Printstate(albert);
                                                 albert.PrintPlayer();
+                                                UI1.PrintDesert();
                                                 BattleFirstScript(array);
                                                 PrintBattleCursorPosition();
                                                 Console.SetCursorPosition(70, 46);
@@ -411,6 +418,7 @@ namespace private_project
                                         UI1.MakeUI();
                                         UI1.PrintStage(stage, round);
                                         UI1.Printstate(albert);
+                                        UI1.PrintDesert();
                                         Console.SetCursorPosition(4, 43);
                                         Console.WriteLine("팔팔한 생선이 인벤토리에 없습니다.");
                                         ConsoleKeyInfo input3 = Console.ReadKey();
@@ -419,6 +427,7 @@ namespace private_project
                                         UI1.PrintStage(stage, round);
                                         UI1.Printstate(albert);
                                         albert.PrintPlayer();
+                                        UI1.PrintDesert();
                                         BattleFirstScript(array);
                                         PrintBattleCursorPosition();
                                         Console.SetCursorPosition(70, 46);
@@ -449,9 +458,10 @@ namespace private_project
             UI1.PrintStage(stage, round);
             UI1.Printstate(albert);
             albert.PrintPlayer();
-            Console.SetCursorPosition(4, 43);
+            UI1.PrintDesert();
+            Console.SetCursorPosition(4, 45);
             Console.WriteLine("풀숲에서 갑자기 {0}이 나타났다!!!", primi.name);
-            Task.Delay(1000).Wait();
+            Task.Delay(1500).Wait();
             while (true)
             {
                 
@@ -459,6 +469,7 @@ namespace private_project
                 UI1.PrintStage(stage, round);
                 UI1.Printstate(albert);
                 albert.PrintPlayer();
+                UI1.PrintDesert();
                 primi.PrintPrimi1();
                 if (albert.hp <= 0)
                 {
@@ -525,8 +536,8 @@ namespace private_project
             Console.WriteLine("원주민들에게 환대를 받고 체력을 회복했으며 화석을 받았다.");
             Task.Delay(800).Wait();
             Console.SetCursorPosition(4, 49);
-            Console.WriteLine("체력이 50회복되고 화석을 20 얻었습니다.");
-            albert.hp = albert.maxHp;
+            Console.WriteLine("체력이 100회복되고 화석을 20 얻었습니다.");
+            albert.hp = albert.hp+100;
             albert.fossils += 30;
             ConsoleKeyInfo input = Console.ReadKey();
         }
@@ -637,6 +648,7 @@ namespace private_project
                     UI1.PrintStage(stage, round);
                     UI1.Printstate(albert);
                     albert.PrintPlayer();
+                    UI1.PrintDesert();
                     Console.SetCursorPosition(4, 43);
                     Console.WriteLine("공룡과의 싸움에서 승리하고 화석을 20얻었다.");
                     albert.fossils += 30;
@@ -653,6 +665,7 @@ namespace private_project
                 UI1.PrintStage(stage, round);
                 UI1.Printstate(albert);
                 albert.PrintPlayer();
+                UI1.PrintDesert();
                 PrintBattleDinosaur(array);
                 Console.SetCursorPosition(30, 32);
                 Console.WriteLine("{0}", array.name);
