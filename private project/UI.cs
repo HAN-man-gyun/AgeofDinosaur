@@ -86,14 +86,17 @@ namespace private_project
         {
             Console.SetCursorPosition(10, 6);
             Console.Write("2200년 천재과학자 알버트는 타임머신 개발에 성공했다.");
-            Console.SetCursorPosition(10, 7);
-            Console.Write("알버트은 현대에 모든 공룡을 복원하기위해 공룡알을 수집하는 임무를 진행하기로 결정하였다.");
             Console.SetCursorPosition(10, 8);
-            Console.Write("부푼 꿈을 안고 타임머신에 몸을 맡겨 백악기로 넘어가던 중 타임머신이 흔들리기 시작했다. ");
-            Console.SetCursorPosition(10, 9);
-            Console.Write("시공간 폭풍을 만난것이다.폭풍을 뚫고 백악기로 도착했지만  착륙이 불안정했는지 타임머신의 부품들이 여기저기로 흩어져버렸다.");
+            Console.Write("알버트은 현대에 모든 공룡을 복원하기위해 공룡알을 수집하는 임무를 진행하기로 결정하였다.");
             Console.SetCursorPosition(10, 10);
+            Console.Write("부푼 꿈을 안고 타임머신에 몸을 맡겨 백악기로 넘어가던 중 타임머신이 흔들리기 시작했다. ");
+            Console.SetCursorPosition(10, 12);
+            Console.Write("시공간 폭풍을 만난것이다.폭풍을 뚫고 백악기로 도착했지만 ");
+            Console.SetCursorPosition(10, 14); 
+            Console.Write("착륙이 불안정했는지 타임머신의 부품들이 여기저기로 흩어져버렸다.");
+            Console.SetCursorPosition(10, 16);
             Console.Write("무시무시한 공룡들이 사는 세상에서 알버트는 모든 공룡알과 부품을 수집해서 현실로 돌아갈수있을까?");
+            ConsoleKeyInfo input1 = Console.ReadKey();
         }
         public void Printstate(Player albert)
         {

@@ -730,7 +730,6 @@ namespace private_project
                             break;
 
                         }
-                        break;
                 }
                 if(closeShop == true)
                 {

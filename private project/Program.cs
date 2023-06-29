@@ -65,7 +65,7 @@ namespace private_project
             normal2.InitDinosaur("브라키오사우루스", 200, 200, 40, 5, "초식공룡", 50);
             dinosaurs.Add(normal2);
             dinosaur boss1 = new dinosaur();
-            boss1.InitDinosaur("벨로시랩터", 300, 300, 30, 40, "육식공룡", 500);
+            boss1.InitDinosaur("벨로시랩터", 300, 300, 30, 40, "육식공룡", 1000);
             dinosaurs.Add(boss1);
             dinosaur normal4 = new dinosaur();
             normal4.InitDinosaur("파라사우롤로푸스", 200, 200, 30, 10, "초식공룡", 80);
@@ -74,19 +74,19 @@ namespace private_project
             normal5.InitDinosaur("스테고사우루스", 200, 200, 30, 10, "초식공룡", 35);
             dinosaurs.Add(normal5);
             dinosaur boss2 = new dinosaur();
-            boss2.InitDinosaur("티라노사우루스", 300, 300, 50, 10, "육식공룡", 0);
+            boss2.InitDinosaur("티라노사우루스", 300, 300, 50, 10, "육식공룡", 1000);
             dinosaurs.Add(boss2);
             dinosaur normal7 = new dinosaur();
-            normal7.InitDinosaur("알로사우루스", 300, 300, 40, 10, "육식공룡", 15);
+            normal7.InitDinosaur("알로사우루스", 300, 300, 40, 10, "육식공룡", 90);
             dinosaurs.Add(normal7);
             dinosaur normal8 = new dinosaur();
-            normal8.InitDinosaur("안킬로사우루스", 400, 400, 30, 10, "초식공룡", 35);
+            normal8.InitDinosaur("안킬로사우루스", 400, 400, 30, 10, "초식공룡", 40);
             dinosaurs.Add(normal8);
             dinosaur boss3 = new dinosaur();
-            boss3.InitDinosaur("프테라노돈", 300, 300, 40, 40, "육식공룡", 50);
+            boss3.InitDinosaur("프테라노돈", 300, 300, 40, 40, "육식공룡", 70);
             dinosaurs.Add(boss3);
             dinosaur boss4 = new dinosaur();
-            boss4.InitDinosaur("기가노토사우루스", 600, 600, 100, 20, "육식공룡", 0);
+            boss4.InitDinosaur("기가노토사우루스", 600, 600, 100, 20, "육식공룡", 1000);
             dinosaurs.Add(boss4);
             //원주민리스트생성
             List<PrimitiveMan> mans = new List<PrimitiveMan>();
@@ -94,7 +94,7 @@ namespace private_project
             man1.InitPrimitive("원시인", 100, 100, 30, 10, 20, 50);
             mans.Add(man1);
             PrimitiveMan man2 = new PrimitiveMan();
-            man2.InitPrimitive("식인종", 100, 100, 30, 10, 20, 20);
+            man2.InitPrimitive("식인종", 200, 200, 50, 10, 20, 20);
             mans.Add(man2);
             //shop객체생성
             Shop shop = new Shop();
@@ -108,6 +108,8 @@ namespace private_project
             int dinoIdx = 0;
             //원주민 랜덤인덱스 변수
             int tempPrimitive;
+            //공룡 싸울확률 변수
+            int tempDinoBattle;
            
             //start screen 출력
             //UI출력
@@ -117,6 +119,9 @@ namespace private_project
             Console.Clear();
             Task.Delay(1000).Wait();
 
+            UI1.MakeUI();
+            UI1.Synopsis();
+
            
 
             //UI출력
@@ -125,8 +130,9 @@ namespace private_project
 
             while (true)
             {
-                temp = rnd.Next(0, 101);
+                temp = rnd.Next(0, 50);
                 tempPrimitive = rnd.Next(0, 2);
+                tempDinoBattle = rnd.Next(0, 101);
                 //기본스크립트 출력
                 UI1.PrintRoundStart();
                 UI1.PrintStage(stage, round);
@@ -136,18 +142,21 @@ namespace private_project
                 Console.Write("현재 albert의 에그갯수 {0}", albert.eggCount);
                 Console.SetCursorPosition(60, 6);
                 Console.Write("현재 temp {0}", temp);
+                
                 Task.Delay(1000).Wait();
                 if (round != 1 && albert.eggCount % 3 != 0)
                 {// 라운드가 1이 아니면서 eggCount가 3의 배수가 아니라면
                     if (temp <= 50)
                     {
-                        Console.SetCursorPosition(70, 7);
+                        tempDinoBattle = rnd.Next(0, 101);
+                        Console.SetCursorPosition(60, 7);
+                        Console.Write("현재 tempDino {0}", tempDinoBattle);
+                        Console.SetCursorPosition(60, 8);
                         Console.Write("현재 test1");
                         Task.Delay(1000).Wait();
-                        live = BattleDino(dinosaurs[dinoIdx], ref albert, ref UI1, stage, round);
+                        live = BattleDino(dinosaurs[dinoIdx], ref albert, ref UI1, stage, round, tempDinoBattle);
                         round++;
                         dinoIdx++;
-
                         if (live == false)
                         {
                             Console.WriteLine("게임에서 패배했습니다. 다시 도전해주세요.");
@@ -201,7 +210,7 @@ namespace private_project
                 else if (albert.eggCount % 3 == 0)//알의 갯수가 3의 배수라면
                 {
                     //보스공룡과의 전투
-                    live = BattleDino(dinosaurs[dinoIdx], ref albert, ref UI1, stage, round);
+                    live = BattleDino(dinosaurs[dinoIdx], ref albert, ref UI1, stage, round, tempDinoBattle);
                     round++;
                     dinoIdx++;
                     if (albert.hp <= 0)
@@ -244,53 +253,14 @@ namespace private_project
 
             Console.SetCursorPosition(0, 38);
         }
-        static bool BattleDino(dinosaur array, ref Player albert, ref UI UI1, int stage, int round)
+        static bool BattleDino(dinosaur array, ref Player albert, ref UI UI1, int stage, int round, int tempDinoBattle)
         {
             bool alive = true;
             Console.Clear();
             UI1.MakeUI();
             UI1.PrintStage(stage, round);
             UI1.Printstate(albert);
-            if (array.name == "트리케라톱스")
-            {
-                array.PrintTri();
-            }
-            else if(array.name == "브라키오사우루스")
-            {
-                array.PrintBra();
-            }
-            else if(array.name == "벨로시랩터")
-            {
-                array.PrintRapter();
-            }
-            else if(array.name == "파라사우롤로푸스")
-            {
-                array.PrintPhy();
-            }
-            else if(array.name == "스테고사우루스")
-            {
-                array.PrintStego();
-            }
-            else if(array.name == "티라노사우루스")
-            {
-                array.PrintTrano();
-            }
-            else if(array.name == "알로사우루스")
-            {
-                array.PrintAlo();
-            }
-            else if(array.name == "안킬로사우루스")
-            {
-                array.PrintAnkilo();
-            }
-            else if(array.name == "프테라노돈")
-            {
-                array.PrintPtera();
-            }
-            else if(array.name == "기가노토사우루스")
-            {
-                array.PrintGiga();
-            }
+            PrintBattleDinosaur(array);
             if (array.name =="벨로시랩터" || array.name =="티라노사우루스" || array.name =="기가노토사우루스")
             {
                 Console.SetCursorPosition(4, 43);
@@ -309,92 +279,100 @@ namespace private_project
             Task.Delay(1000).Wait();
             while (true)
             {
+                bool check = false;
+                PrintBattleDinosaur(array);
                 UI1.MakeUI();
                 UI1.PrintStage(stage, round);
                 UI1.Printstate(albert);
                 albert.PrintPlayer();
-                if (array.name == "트리케라톱스")
+                BattleFirstScript(array);
+                PrintBattleCursorPosition();
+
+              
+                Console.SetCursorPosition(70, 46);
+                while (true)
                 {
-                    array.PrintTri();
+                    ConsoleKeyInfo input1 = Console.ReadKey();
+                    switch (input1.Key)
+                    {
+                        case ConsoleKey.UpArrow:
+                            {
+                                if (Console.CursorTop == 46)
+                                {
+                                    Console.SetCursorPosition(70, 50);
+                                }
+                                else
+                                {
+                                    Console.SetCursorPosition(70, Console.CursorTop - 2);                              
+                                }
+                                break;
+                            }
+                        case ConsoleKey.DownArrow:
+                            {
+                                if (Console.CursorTop == 50)
+                                {
+                                    Console.SetCursorPosition(70, 46);
+
+                                }
+                                else
+                                {
+                                    Console.SetCursorPosition(70, Console.CursorTop +2);
+
+                                }
+                                break;
+                            }
+                        case ConsoleKey.Enter:
+                            {
+                                if (Console.CursorTop == 46)
+                                {
+                                    if (tempDinoBattle <= array.friendship)
+                                    {
+                                        Console.Clear();
+                                        UI1.MakeUI();
+                                        UI1.PrintStage(stage, round);
+                                        UI1.Printstate(albert);
+                                        Console.SetCursorPosition(4,43);
+                                        Console.WriteLine("휴 다행히 무사히 알을 가지고 도망쳤다...");
+                                        check = true;
+                                        Task.Delay(1000).Wait();
+                                        break;
+                                    }
+                                    else
+                                    {
+                                        Console.Clear();
+                                        UI1.MakeUI();
+                                        UI1.PrintStage(stage, round);
+                                        UI1.Printstate(albert);
+                                        Console.SetCursorPosition(4, 43);
+                                        Console.WriteLine("이런! 경계심이 강해서 들켜버렸다! 전투가 불가피하다...");
+                                        Task.Delay(1000).Wait();
+                                        Battle1(array, albert, ref alive, UI1, ref stage, ref round);
+                                        check = true;
+                                        break;
+                                    }
+                                }
+                                else if (Console.CursorTop == 48)
+                                {
+
+                                    break;
+                                }
+                                else if (Console.CursorTop == 50)
+                                {
+
+                                    break;
+                                }
+                                break;
+                            }
+                    }  
+                    if(check == true)
+                    {
+                        break;
+                    }
                 }
-                else if (array.name == "브라키오사우루스")
+                if(check ==true)
                 {
-                    array.PrintBra();
-                }
-                else if (array.name == "벨로시랩터")
-                {
-                    array.PrintRapter();
-                }
-                else if (array.name == "파라사우롤로푸스")
-                {
-                    array.PrintPhy();
-                }
-                else if (array.name == "스테고사우루스")
-                {
-                    array.PrintStego();
-                }
-                else if (array.name == "티라노사우루스")
-                {
-                    array.PrintTrano();
-                }
-                else if (array.name == "알로사우루스")
-                {
-                    array.PrintAlo();
-                }
-                else if (array.name == "안킬로사우루스")
-                {
-                    array.PrintAnkilo();
-                }
-                else if (array.name == "프테라노돈")
-                {
-                    array.PrintPtera();
-                }
-                else if (array.name == "기가노토사우루스")
-                {
-                    array.PrintGiga();
-                }
-                if (albert.hp <= 0)
-                {
-                    alive = false;
-                    Console.Clear();
                     break;
                 }
-                else if (array.hp <= 0)
-                {
-                    Console.SetCursorPosition(4, 43);
-                    Console.WriteLine("공룡과의 싸움에서 승리하고 화석을 20얻었다.");
-                    albert.fossils += 20;
-                    Task.Delay(1000).Wait();
-                    alive = true;
-                    albert.eggCount++;
-                    ConsoleKeyInfo input = Console.ReadKey();
-                    Console.Clear();
-                    break;
-                }
-                Console.SetCursorPosition(30, 32);
-                Console.WriteLine("{0}", array.name);
-                Console.SetCursorPosition(30, 34);
-                Console.WriteLine("현재HP  {0}", array.hp);
-                Task.Delay(400).Wait();
-                Console.SetCursorPosition(80, 32);
-                Console.WriteLine("{0}", albert.name);
-                Console.SetCursorPosition(80, 34);
-                Console.WriteLine("현재HP  {0}", albert.hp);
-                Task.Delay(400).Wait();
-                Console.SetCursorPosition(4, 43);
-                Console.WriteLine("알버트가 {0}를 {1}로 공격했다.", array.name, albert.weaponName);
-                Task.Delay(400).Wait();
-                Console.SetCursorPosition(4, 45);
-                Console.WriteLine("{0}의 HP가 {1}만큼 떨어졌다.", array.name, albert.weaponPower);
-                array.hp = array.hp - albert.weaponPower;
-                Task.Delay(400).Wait();
-                Console.SetCursorPosition(4, 47);
-                Console.WriteLine("{0}가 알버트를 공격했다.", array.name);
-                Task.Delay(400).Wait();
-                Console.SetCursorPosition(4, 49);
-                Console.WriteLine("알버트의 HP가 {0}만큼 떨어졌다.", array.power);
-                albert.hp = albert.hp - array.power;
-                Task.Delay(1000).Wait();
             }
             return alive;
         }
@@ -509,6 +487,134 @@ namespace private_project
             Console.SetCursorPosition(4, 49);
             Console.WriteLine("HP가 50 감소하였습니다.....");
             ConsoleKeyInfo input = Console.ReadKey();
+        }
+
+       
+
+        static void BattleFirstScript(dinosaur a1)
+        {
+            Console.SetCursorPosition(4, 43);
+            Console.Write("아직까지 {0}는 나를 발견하지 못한것같다 무었을해야할까?",a1.name);
+            Console.SetCursorPosition(4, 45);
+            Console.Write("1.알을 조용히 가져가보자");
+            Console.SetCursorPosition(4, 47);
+            Console.Write("2.{0}이 좋아하는 풀을 줘서 경계를 풀어보자", a1.name);
+            Console.SetCursorPosition(4, 49);
+            Console.Write("3.도망가자.");
+        }
+
+        static void PrintBattleCursorPosition()
+        {
+            Console.SetCursorPosition(70, 45);
+            Console.Write("▲");
+            Console.SetCursorPosition(70, 47);
+            Console.Write("▲");
+            Console.SetCursorPosition(70, 49);
+            Console.Write("▲");
+        }
+
+        static void PrintBattleDinosaur(dinosaur array)
+        {
+            if (array.name == "트리케라톱스")
+            {
+                array.PrintTri();
+            }
+            else if (array.name == "브라키오사우루스")
+            {
+                array.PrintBra();
+            }
+            else if (array.name == "벨로시랩터")
+            {
+                array.PrintRapter();
+            }
+            else if (array.name == "파라사우롤로푸스")
+            {
+                array.PrintPhy();
+            }
+            else if (array.name == "스테고사우루스")
+            {
+                array.PrintStego();
+            }
+            else if (array.name == "티라노사우루스")
+            {
+                array.PrintTrano();
+            }
+            else if (array.name == "알로사우루스")
+            {
+                array.PrintAlo();
+            }
+            else if (array.name == "안킬로사우루스")
+            {
+                array.PrintAnkilo();
+            }
+            else if (array.name == "프테라노돈")
+            {
+                array.PrintPtera();
+            }
+            else if (array.name == "기가노토사우루스")
+            {
+                array.PrintGiga();
+            }
+        }
+
+        static void Battle1(dinosaur array, Player albert, ref bool alive, UI UI1,ref int stage, ref int round)
+        {
+            while (true)
+            {
+                if (albert.hp <= 0)
+                {
+                    alive = false;
+                    Console.Clear();
+                    break;
+                }
+                else if (array.hp <= 0)
+                {
+                    UI1.MakeUI();
+                    UI1.PrintStage(stage, round);
+                    UI1.Printstate(albert);
+                    albert.PrintPlayer();
+                    Console.SetCursorPosition(4, 43);
+                    Console.WriteLine("공룡과의 싸움에서 승리하고 화석을 20얻었다.");
+                    albert.fossils += 20;
+                    Task.Delay(1000).Wait();
+                    alive = true;
+                    albert.eggCount++;
+                    ConsoleKeyInfo input = Console.ReadKey();
+                    Console.Clear();
+                    break;
+                }
+                Console.Clear();
+
+                UI1.MakeUI();
+                UI1.PrintStage(stage, round);
+                UI1.Printstate(albert);
+                albert.PrintPlayer();
+                PrintBattleDinosaur(array);
+                Console.SetCursorPosition(30, 32);
+                Console.WriteLine("{0}", array.name);
+                Console.SetCursorPosition(30, 34);
+                Console.WriteLine("현재HP  {0}", array.hp);
+                Task.Delay(400).Wait();
+                Console.SetCursorPosition(80, 32);
+                Console.WriteLine("{0}", albert.name);
+                Console.SetCursorPosition(80, 34);
+                Console.WriteLine("현재HP  {0}", albert.hp);
+                Task.Delay(400).Wait();
+                Console.SetCursorPosition(4, 43);
+                Console.WriteLine("알버트가 {0}를 {1}로 공격했다.", array.name, albert.weaponName);
+                Task.Delay(400).Wait();
+                Console.SetCursorPosition(4, 45);
+                Console.WriteLine("{0}의 HP가 {1}만큼 떨어졌다.", array.name, albert.weaponPower);
+                array.hp = array.hp - albert.weaponPower;
+                Task.Delay(400).Wait();
+                Console.SetCursorPosition(4, 47);
+                Console.WriteLine("{0}가 알버트를 공격했다.", array.name);
+                Task.Delay(400).Wait();
+                Console.SetCursorPosition(4, 49);
+                Console.WriteLine("알버트의 HP가 {0}만큼 떨어졌다.", array.power);
+                albert.hp = albert.hp - array.power;
+                Task.Delay(1000).Wait();
+            }
         }
     }
 }
