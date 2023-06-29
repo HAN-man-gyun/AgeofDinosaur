@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,6 +19,17 @@ namespace private_project
             this.price = price;
             this.power = power;
             this.script = script;
+        }
+        public item(string name, int price, int power, string script)
+        {
+            this.name = name;
+            this.price = price;
+            this.power = power;
+            this.script = script;
+        }
+        public item()
+        {
+
         }
     }
 }

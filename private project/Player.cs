@@ -17,6 +17,8 @@ namespace private_project
         public int luck;
         public int fossils;
         public int eggCount;
+        //플레이어 인벤토리
+        public List<string> playerInventory = new List<string>();
 
         public void IntiailizePlayer(string name, string weaponname, int weaponpower, int maxHp, int hp, int luck, int fossils, int eggcount)
         {

@@ -12,24 +12,32 @@ namespace private_project
         public void InitializeItem()
         {
             item item1 = new item();
-            item1.InitialItem("돌창", 50, 20, "정예전사에게만 주어지는 날카로운 돌창이다.");
+            item1.InitialItem("돌창", 50, 30, "정예전사에게만 주어지는 날카로운 돌창이다.");
             items.Add(item1);
 
             item item2 = new item();
-            item2.InitialItem("청동검", 100, 30, "과거 지도자들이 가지고다녔던 지배의 상징 청동검이다.");
+            item2.InitialItem("청동검", 100, 40, "과거 지도자들이 가지고다녔던 지배의 상징 청동검이다.");
             items.Add(item2);
 
             item item3 = new item();
-            item3.InitialItem("Ak총", 150, 35, "폭풍속에서 잃어버린 현대기술의 소총이다.");
+            item3.InitialItem("Ak총", 150, 50, "폭풍속에서 잃어버린 현대기술의 소총이다.");
             items.Add(item3);
 
             item item4 = new item();
-            item4.InitialItem("마취연막탄", 200, 40, "폭풍속에서 잃어버린 동물의 힘을 줄이기위해 특별히 제작된 마취연막탄이다.");
+            item4.InitialItem("마취연막탄", 200, 70, "폭풍속에서 잃어버린 동물의 힘을 줄이기위해 특별히 제작된 마취연막탄이다.");
             items.Add(item4);
 
             item item5 = new item();
-            item5.InitialItem("레이저건", 250, 50, "폭풍속에서 잃어버린 미래기술이 집약된 레이저건이다.");
+            item5.InitialItem("레이저건", 250, 100, "폭풍속에서 잃어버린 미래기술이 집약된 레이저건이다.");
             items.Add(item5);
+
+            item item6 = new item();
+            item6.InitialItem("팔팔한생선", 50, 100, "갓잡은 팔팔한생선이다 HP를 100회복시켜준다.");
+            items.Add(item6);
+
+            item item7 = new item();
+            item7.InitialItem("공룡캣닢", 100, 40, "공룡들이 좋아하는 잎이다. 경계심을 낮춰줄수있다.");
+            items.Add(item7);
         }
         public void firstscript()
         {
@@ -55,7 +63,11 @@ namespace private_project
             Console.Write("▲");
             Console.SetCursorPosition(35, 15);
             Console.Write("▲");
-            Console.SetCursorPosition(33, 7);
+            Console.SetCursorPosition(35, 17);
+            Console.Write("▲");
+            Console.SetCursorPosition(35, 19);
+            Console.Write("▲");
+            Console.SetCursorPosition(35, 7);
         }
 
         public void PrintShop()
@@ -72,6 +84,10 @@ namespace private_project
             Console.Write("{0} : {1}", items[3].name, items[3].price);
             Console.SetCursorPosition(7, 15);
             Console.Write("{0} : {1}", items[4].name, items[4].price);
+            Console.SetCursorPosition(7, 17);
+            Console.Write("{0} : {1}", items[5].name, items[5].price);
+            Console.SetCursorPosition(7, 19);
+            Console.Write("{0} : {1}", items[6].name, items[6].price);
         }
         public void PrintMerchant()
         {
@@ -148,7 +164,7 @@ namespace private_project
                     case ConsoleKey.UpArrow:
                         if (Console.CursorTop == 7)
                         {
-                            Console.SetCursorPosition(33, 15);
+                            Console.SetCursorPosition(33, 19);
                         }
                         else
                         {
@@ -156,7 +172,7 @@ namespace private_project
                         }
                         break;
                     case ConsoleKey.DownArrow:
-                        if (Console.CursorTop == 15)
+                        if (Console.CursorTop == 19)
                         {
                             Console.SetCursorPosition(33, 7);
                         }
@@ -229,10 +245,16 @@ namespace private_project
                                                         Console.Write("휴먼! 탁월한선택입니다.!");
                                                         Console.SetCursorPosition(4, 45);
                                                         Console.Write("아이템구매에 성공했습니다!");
-                                                        albert.fossils = items[0].price;
+                                                        albert.fossils -= items[0].price;
                                                         albert.weaponPower = items[0].power;
                                                         albert.weaponName = items[0].name;
                                                         Task.Delay(1000).Wait();
+                                                        Console.Clear();
+                                                        UI1.MakeUI();
+                                                        PrintMerchant();
+                                                        PrintShop();
+                                                        PrintCursorPosition();
+                                                        UI1.Printstate(albert);
                                                         Console.SetCursorPosition(33, 7);
                                                         buyCheck = true;
                                                         break;
@@ -333,10 +355,16 @@ namespace private_project
                                                         Console.Write("휴먼! 탁월한선택입니다.!");
                                                         Console.SetCursorPosition(4, 45);
                                                         Console.Write("아이템구매에 성공했습니다!");
-                                                        albert.fossils = items[1].price;
+                                                        albert.fossils -= items[1].price;
                                                         albert.weaponPower = items[1].power;
                                                         albert.weaponName = items[1].name;
                                                         Task.Delay(1000).Wait();
+                                                        Console.Clear();
+                                                        UI1.MakeUI();
+                                                        PrintMerchant();
+                                                        PrintShop();
+                                                        PrintCursorPosition();
+                                                        UI1.Printstate(albert);
                                                         Console.SetCursorPosition(33, 7);
                                                         buyCheck = true;
 
@@ -439,10 +467,16 @@ namespace private_project
                                                         Console.Write("휴먼! 탁월한선택입니다!");
                                                         Console.SetCursorPosition(4, 45);
                                                         Console.Write("아이템구매에 성공했습니다!");
-                                                        albert.fossils = items[2].price;
+                                                        albert.fossils -= items[2].price;
                                                         albert.weaponPower = items[2].power;
                                                         albert.weaponName = items[2].name;
                                                         Task.Delay(1000).Wait();
+                                                        Console.Clear();
+                                                        UI1.MakeUI();
+                                                        PrintMerchant();
+                                                        PrintShop();
+                                                        PrintCursorPosition();
+                                                        UI1.Printstate(albert);
                                                         Console.SetCursorPosition(33, 7);
                                                         buyCheck = true;
                                                         break;
@@ -544,10 +578,16 @@ namespace private_project
                                                         Console.Write("휴먼! 탁월한선택입니다.!");
                                                         Console.SetCursorPosition(4, 45);
                                                         Console.Write("아이템구매에 성공했습니다!");
-                                                        albert.fossils = items[3].price;
+                                                        albert.fossils -= items[3].price;
                                                         albert.weaponPower = items[3].power;
                                                         albert.weaponName = items[3].name;
                                                         Task.Delay(1000).Wait();
+                                                        Console.Clear();
+                                                        UI1.MakeUI();
+                                                        PrintMerchant();
+                                                        PrintShop();
+                                                        PrintCursorPosition();
+                                                        UI1.Printstate(albert);
                                                         Console.SetCursorPosition(33, 7);
                                                         buyCheck = true;
 
@@ -656,10 +696,16 @@ namespace private_project
                                                         Console.Write("휴먼! 탁월한선택입니다.!");
                                                         Console.SetCursorPosition(4, 45);
                                                         Console.Write("아이템구매에 성공했습니다!");
-                                                        albert.fossils = items[0].price;
-                                                        albert.weaponPower = items[0].power;
-                                                        albert.weaponName = items[0].name;
+                                                        albert.fossils -= items[4].price;
+                                                        albert.weaponPower = items[4].power;
+                                                        albert.weaponName = items[4].name;
                                                         Task.Delay(1000).Wait();
+                                                        Console.Clear();
+                                                        UI1.MakeUI();
+                                                        PrintMerchant();
+                                                        PrintShop();
+                                                        PrintCursorPosition();
+                                                        UI1.Printstate(albert);
                                                         Console.SetCursorPosition(33, 7);
                                                         buyCheck = true;
 
@@ -710,7 +756,231 @@ namespace private_project
                                     }
                                     break;
                                 }
-                        }break;
+                            case 17:
+                                {
+                                    Console.Clear();
+                                    UI1.MakeUI();
+                                    PrintMerchant();
+                                    PrintShop();
+                                    PrintCursorPosition();
+                                    UI1.Printstate(albert);
+                                    Console.SetCursorPosition(4, 43);
+                                    Console.Write("팔팔한 생선을 구매하시겠습니까?");
+                                    Console.SetCursorPosition(10, 45);
+                                    Console.Write("네");
+                                    Console.SetCursorPosition(10, 47);
+                                    Console.Write("아니오");
+                                    Console.SetCursorPosition(10, 46);
+                                    while (true)
+                                    {
+                                        ConsoleKeyInfo input2 = Console.ReadKey();
+                                        switch (input2.Key)
+                                        {
+                                            case ConsoleKey.UpArrow:
+                                                if (Console.CursorTop == 46)
+                                                {
+                                                    Console.SetCursorPosition(10, 48);
+                                                    break;
+                                                }
+                                                else if (Console.CursorTop == 48)
+                                                {
+                                                    Console.SetCursorPosition(10, 46);
+                                                    break;
+                                                }
+                                                break;
+                                            case ConsoleKey.DownArrow:
+                                                if (Console.CursorTop == 46)
+                                                {
+                                                    Console.SetCursorPosition(10, 48);
+                                                    break;
+                                                }
+                                                else if (Console.CursorTop == 48)
+                                                {
+                                                    Console.SetCursorPosition(10, 46);
+                                                    break;
+                                                }
+                                                break;
+                                            case ConsoleKey.Enter:
+                                                if (Console.CursorTop == 46)
+                                                {
+                                                    if (albert.fossils >= items[0].price)
+                                                    {
+                                                        Console.SetCursorPosition(4, 43);
+                                                        Console.Write("휴먼! 탁월한선택입니다.!");
+                                                        Console.SetCursorPosition(4, 45);
+                                                        Console.Write("아이템구매에 성공했습니다!");
+                                                        albert.fossils -= items[5].price;
+                                                        albert.playerInventory.Add("팔팔한생선");
+                                                        Task.Delay(1000).Wait();
+                                                        Console.Clear();
+                                                        UI1.MakeUI();
+                                                        PrintMerchant();
+                                                        PrintShop();
+                                                        PrintCursorPosition();
+                                                        UI1.Printstate(albert);
+                                                        Console.SetCursorPosition(33, 7);
+                                                        buyCheck = true;
+                                                        break;
+                                                    }
+                                                    else
+                                                    {
+                                                        Console.Clear();
+                                                        UI1.MakeUI();
+                                                        PrintMerchant();
+                                                        PrintShop();
+                                                        PrintCursorPosition();
+                                                        UI1.Printstate(albert);
+                                                        Console.SetCursorPosition(4, 43);
+                                                        Console.Write("그 물건은 당신이 다루기 어려울것입니다.");
+                                                        Console.SetCursorPosition(4, 45);
+                                                        Console.Write("화석이 부족합니다.");
+                                                        Task.Delay(1000).Wait();
+                                                        Console.SetCursorPosition(33, 7);
+                                                        buyCheck = true;
+
+
+                                                    }
+                                                }
+                                                else if (Console.CursorTop == 48)
+                                                {
+                                                    Console.Clear();
+                                                    UI1.MakeUI();
+                                                    PrintMerchant();
+                                                    PrintShop();
+                                                    PrintCursorPosition();
+                                                    UI1.Printstate(albert);
+                                                    Console.SetCursorPosition(4, 43);
+                                                    Console.Write("다른물건도 있으니 구경부탁드립니다 휴먼.");
+                                                    Task.Delay(1000).Wait();
+                                                    Console.SetCursorPosition(33, 7);
+                                                    buyCheck = true;
+                                                    break;
+                                                }
+                                                break;
+                                        }
+                                        if (buyCheck == true)
+                                        {
+                                            buyCheck = false;
+                                            break;
+                                        }
+                                    }
+                                    break;
+                                }
+                            case 19:
+                                {
+                                    Console.Clear();
+                                    UI1.MakeUI();
+                                    PrintMerchant();
+                                    PrintShop();
+                                    PrintCursorPosition();
+                                    UI1.Printstate(albert);
+                                    Console.SetCursorPosition(4, 43);
+                                    Console.Write("공룡캣닢을 구매하시겠습니까?");
+                                    Console.SetCursorPosition(10, 45);
+                                    Console.Write("네");
+                                    Console.SetCursorPosition(10, 47);
+                                    Console.Write("아니오");
+                                    Console.SetCursorPosition(10, 46);
+                                    while (true)
+                                    {
+                                        ConsoleKeyInfo input2 = Console.ReadKey();
+                                        switch (input2.Key)
+                                        {
+                                            case ConsoleKey.UpArrow:
+                                                if (Console.CursorTop == 46)
+                                                {
+                                                    Console.SetCursorPosition(10, 48);
+                                                    break;
+                                                }
+                                                else if (Console.CursorTop == 48)
+                                                {
+                                                    Console.SetCursorPosition(10, 46);
+                                                    break;
+                                                }
+                                                break;
+                                            case ConsoleKey.DownArrow:
+                                                if (Console.CursorTop == 46)
+                                                {
+                                                    Console.SetCursorPosition(10, 48);
+                                                    break;
+                                                }
+                                                else if (Console.CursorTop == 48)
+                                                {
+                                                    Console.SetCursorPosition(10, 46);
+                                                    break;
+                                                }
+                                                break;
+                                            case ConsoleKey.Enter:
+                                                if (Console.CursorTop == 46)
+                                                {
+                                                    if (albert.fossils >= items[0].price)
+                                                    {
+                                                        Console.SetCursorPosition(4, 43);
+                                                        Console.Write("휴먼! 탁월한선택입니다.!");
+                                                        Console.SetCursorPosition(4, 45);
+                                                        Console.Write("아이템구매에 성공했습니다!");
+                                                        albert.fossils -= items[6].price;
+                                                        albert.playerInventory.Add("공룡캣닢");
+                                                        Console.Clear();
+                                                        UI1.MakeUI();
+                                                        PrintMerchant();
+                                                        PrintShop();
+                                                        PrintCursorPosition();
+                                                        UI1.Printstate(albert);
+                                                        Task.Delay(1000).Wait();
+                                                        Console.SetCursorPosition(33, 7);
+                                                        buyCheck = true;
+
+
+                                                        break;
+                                                    }
+                                                    else
+                                                    {
+                                                        Console.Clear();
+                                                        UI1.MakeUI();
+                                                        PrintMerchant();
+                                                        PrintShop();
+                                                        PrintCursorPosition();
+                                                        UI1.Printstate(albert);
+                                                        Console.SetCursorPosition(4, 43);
+                                                        Console.Write("그 물건은 당신이 다루기 어려울것입니다.");
+                                                        Console.SetCursorPosition(4, 45);
+                                                        Console.Write("화석이 부족합니다.");
+                                                        Task.Delay(1000).Wait();
+                                                        Console.SetCursorPosition(33, 7);
+                                                        buyCheck = true;
+
+
+                                                    }
+                                                }
+                                                else if (Console.CursorTop == 48)
+                                                {
+                                                    Console.Clear();
+                                                    UI1.MakeUI();
+                                                    PrintMerchant();
+                                                    PrintShop();
+                                                    PrintCursorPosition();
+                                                    UI1.Printstate(albert);
+                                                    Console.SetCursorPosition(4, 43);
+                                                    Console.Write("다른물건도 있으니 구경부탁드립니다 휴먼.");
+                                                    Task.Delay(1000).Wait();
+                                                    Console.SetCursorPosition(33, 7);
+                                                    buyCheck = true;
+                                                    break;
+                                                }
+                                                break;
+                                        }
+                                        if (buyCheck == true)
+                                        {
+                                            buyCheck = false;
+                                            break;
+                                        }
+                                    }
+                                    break;
+                                }
+
+                        }
+                        break;
                     case ConsoleKey.Escape:   // esc를 눌러 상점을 떠나려는 경우
                         {
                             Console.Clear();

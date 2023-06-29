@@ -9,7 +9,7 @@ namespace private_project
 {
     public class Program
     {
-        static void Main(string[] args)
+        static void Main(string[] args) 
         {
             //라운드,스테이지 변수생성
             int round = 1;
@@ -21,48 +21,20 @@ namespace private_project
             UI UI1 = new UI();
             //플레이어 생성,초기화
             Player albert = new Player();
-            albert.IntiailizePlayer("알버트", "주먹도끼", 40, 10000, 10000, 10, 20, 0);
+            albert.IntiailizePlayer("알버트", "주먹도끼", 20, 400, 300, 10, 150, 9);
 
-            //공룡알 초기화
-            List<Egg> eggs = new List<Egg>();
-            Egg egg1 = new Egg();
-            egg1.InitialEgg("트리케라톱스의 알");
-            eggs.Add(egg1);
-            Egg egg2 = new Egg();
-            egg1.InitialEgg("브라키오사우르스의 알");
-            eggs.Add(egg2);
-            Egg egg3 = new Egg();
-            egg1.InitialEgg("드로마에사우루스의 알");
-            eggs.Add(egg3);
-            Egg egg4 = new Egg();
-            egg1.InitialEgg("벨로시랩터의 알");
-            eggs.Add(egg4);
-            Egg egg5 = new Egg();
-            egg1.InitialEgg("티라노사우루스의 알");
-            eggs.Add(egg5);
-            Egg egg6 = new Egg();
-            egg1.InitialEgg("스테고사우루스의 알");
-            eggs.Add(egg6);
-            Egg egg7 = new Egg();
-            egg1.InitialEgg("알로사우루스의 알");
-            eggs.Add(egg7);
-            Egg egg8 = new Egg();
-            egg1.InitialEgg("안킬로사우루스의 알");
-            eggs.Add(egg8);
-            Egg egg9 = new Egg();
-            egg1.InitialEgg("프테라노돈의 알");
-            eggs.Add(egg9);
-            Egg egg10 = new Egg();
-            egg1.InitialEgg("기간토노사우루스의 알");
-            eggs.Add(egg10);
+           
+
+
+
 
             //공룡 초기화
             List<dinosaur> dinosaurs = new List<dinosaur>();
             dinosaur normal1 = new dinosaur();
-            normal1.InitDinosaur("트리케라톱스", 200, 200, 30, 10, "초식공룡", 50);
+            normal1.InitDinosaur("트리케라톱스", 200, 200, 20, 10, "초식공룡", 50);
             dinosaurs.Add(normal1);
             dinosaur normal2 = new dinosaur();
-            normal2.InitDinosaur("브라키오사우루스", 200, 200, 40, 5, "초식공룡", 50);
+            normal2.InitDinosaur("브라키오사우루스", 200, 200, 30, 5, "초식공룡", 50);
             dinosaurs.Add(normal2);
             dinosaur boss1 = new dinosaur();
             boss1.InitDinosaur("벨로시랩터", 300, 300, 30, 40, "육식공룡", 1000);
@@ -71,7 +43,7 @@ namespace private_project
             normal4.InitDinosaur("파라사우롤로푸스", 200, 200, 30, 10, "초식공룡", 80);
             dinosaurs.Add(normal4);
             dinosaur normal5 = new dinosaur();
-            normal5.InitDinosaur("스테고사우루스", 200, 200, 30, 10, "초식공룡", 35);
+            normal5.InitDinosaur("스테고사우루스", 200, 200, 30, 10, "초식공룡", 60);
             dinosaurs.Add(normal5);
             dinosaur boss2 = new dinosaur();
             boss2.InitDinosaur("티라노사우루스", 300, 300, 50, 10, "육식공룡", 1000);
@@ -94,7 +66,7 @@ namespace private_project
             man1.InitPrimitive("원시인", 100, 100, 30, 10, 20, 50);
             mans.Add(man1);
             PrimitiveMan man2 = new PrimitiveMan();
-            man2.InitPrimitive("식인종", 200, 200, 50, 10, 20, 20);
+            man2.InitPrimitive("식인종", 150, 150, 30, 10, 20, 20);
             mans.Add(man2);
             //shop객체생성
             Shop shop = new Shop();
@@ -130,7 +102,7 @@ namespace private_project
 
             while (true)
             {
-                temp = rnd.Next(0, 50);
+                temp = rnd.Next(0, 101);
                 tempPrimitive = rnd.Next(0, 2);
                 tempDinoBattle = rnd.Next(0, 101);
                 //기본스크립트 출력
@@ -292,6 +264,7 @@ namespace private_project
                 Console.SetCursorPosition(70, 46);
                 while (true)
                 {
+                   
                     ConsoleKeyInfo input1 = Console.ReadKey();
                     switch (input1.Key)
                     {
@@ -333,6 +306,7 @@ namespace private_project
                                         UI1.Printstate(albert);
                                         Console.SetCursorPosition(4,43);
                                         Console.WriteLine("휴 다행히 무사히 알을 가지고 도망쳤다...");
+                                        albert.eggCount++;
                                         check = true;
                                         Task.Delay(1000).Wait();
                                         break;
@@ -345,6 +319,7 @@ namespace private_project
                                         UI1.Printstate(albert);
                                         Console.SetCursorPosition(4, 43);
                                         Console.WriteLine("이런! 경계심이 강해서 들켜버렸다! 전투가 불가피하다...");
+                                        albert.eggCount++;
                                         Task.Delay(1000).Wait();
                                         Battle1(array, albert, ref alive, UI1, ref stage, ref round);
                                         check = true;
@@ -352,13 +327,102 @@ namespace private_project
                                     }
                                 }
                                 else if (Console.CursorTop == 48)
-                                {
-
+                                {   if (albert.playerInventory.Count != 0)
+                                    {
+                                        for (int i = 0; i < albert.playerInventory.Count; i++)
+                                        {
+                                            if (albert.playerInventory[i] == "공룡캣닢")
+                                            {
+                                                Console.Clear();
+                                                UI1.MakeUI();
+                                                UI1.PrintStage(stage, round);
+                                                UI1.Printstate(albert);
+                                                
+                                                Console.SetCursorPosition(4, 43);
+                                                Drawleap();
+                                                Console.WriteLine("캣잎향이 은은하게 풍깁니다. {0}의 경계심이 풀어졌습니다.", array.name);
+                                                array.friendship += 40;
+                                                albert.playerInventory.RemoveAt(i);
+                                                ConsoleKeyInfo input3 = Console.ReadKey();
+                                                Console.Clear();
+                                                UI1.MakeUI();
+                                                UI1.PrintStage(stage, round);
+                                                UI1.Printstate(albert);
+                                                albert.PrintPlayer();
+                                                BattleFirstScript(array);
+                                                PrintBattleCursorPosition();
+                                                Console.SetCursorPosition(70, 46);
+                                                break;
+                                            }
+                                        }
+                                    }
+                                    else
+                                    {
+                                        Console.Clear();
+                                        UI1.MakeUI();
+                                        UI1.PrintStage(stage, round);
+                                        UI1.Printstate(albert);
+                                        Console.SetCursorPosition(4, 43);
+                                        Console.WriteLine("공룡캣닢이 인벤토리에 없습니다.");
+                                        ConsoleKeyInfo input3 = Console.ReadKey();
+                                        Console.Clear();
+                                        UI1.MakeUI();
+                                        UI1.PrintStage(stage, round);
+                                        UI1.Printstate(albert);
+                                        albert.PrintPlayer();
+                                        BattleFirstScript(array);
+                                        PrintBattleCursorPosition();
+                                        Console.SetCursorPosition(70, 46);
+                                    }
                                     break;
                                 }
                                 else if (Console.CursorTop == 50)
                                 {
-
+                                    if (albert.playerInventory.Count != 0)
+                                    {
+                                        for (int i = 0; i < albert.playerInventory.Count; i++)
+                                        {
+                                            if (albert.playerInventory[i] == "팔팔한생선")
+                                            {
+                                                Console.Clear();
+                                                UI1.MakeUI();
+                                                UI1.PrintStage(stage, round);
+                                                UI1.Printstate(albert);
+                                                Console.SetCursorPosition(4, 43);
+                                                Console.WriteLine(" 팔팔한 생선을먹고 HP를 100회복했습니다!");
+                                                albert.playerInventory.RemoveAt(i);
+                                                albert.hp += 300;
+                                                ConsoleKeyInfo input3 = Console.ReadKey();
+                                                Console.Clear();
+                                                UI1.MakeUI();
+                                                UI1.PrintStage(stage, round);
+                                                UI1.Printstate(albert);
+                                                albert.PrintPlayer();
+                                                BattleFirstScript(array);
+                                                PrintBattleCursorPosition();
+                                                Console.SetCursorPosition(70, 46);
+                                                break;
+                                            }
+                                        }
+                                    }
+                                    else
+                                    {
+                                        Console.Clear();
+                                        UI1.MakeUI();
+                                        UI1.PrintStage(stage, round);
+                                        UI1.Printstate(albert);
+                                        Console.SetCursorPosition(4, 43);
+                                        Console.WriteLine("팔팔한 생선이 인벤토리에 없습니다.");
+                                        ConsoleKeyInfo input3 = Console.ReadKey();
+                                        Console.Clear();
+                                        UI1.MakeUI();
+                                        UI1.PrintStage(stage, round);
+                                        UI1.Printstate(albert);
+                                        albert.PrintPlayer();
+                                        BattleFirstScript(array);
+                                        PrintBattleCursorPosition();
+                                        Console.SetCursorPosition(70, 46);
+                                    }
                                     break;
                                 }
                                 break;
@@ -406,7 +470,7 @@ namespace private_project
                 {
                     Console.SetCursorPosition(4, 43);
                     Console.WriteLine("식인종과의 싸움에서 승리하고 화석을 20얻었다.");
-                    albert.fossils += 20;
+                    albert.fossils += 30;
                     Task.Delay(1000).Wait();
                     primi.hp = primi.maxHp;
                     albert.fossils += 20;
@@ -453,17 +517,17 @@ namespace private_project
             primi.PrintPrimi2();
             Console.SetCursorPosition(4, 43);
             Console.WriteLine("풀숲을 거닐던중 낯선 원시인들을 만났다.");
-            Task.Delay(600).Wait();
+            Task.Delay(800).Wait();
             Console.SetCursorPosition(4, 45);
             Console.WriteLine("다행히도 저들은 나에게 궁금함과 호의를 가지고있는것 같았다.");
-            Task.Delay(600).Wait();
+            Task.Delay(800).Wait();
             Console.SetCursorPosition(4, 47);
             Console.WriteLine("원주민들에게 환대를 받고 체력을 회복했으며 화석을 받았다.");
-            Task.Delay(600).Wait();
+            Task.Delay(800).Wait();
             Console.SetCursorPosition(4, 49);
-            Console.WriteLine("체력이 전부회복되고 화석을 20 얻었습니다.");
+            Console.WriteLine("체력이 50회복되고 화석을 20 얻었습니다.");
             albert.hp = albert.maxHp;
-            albert.fossils += 20;
+            albert.fossils += 30;
             ConsoleKeyInfo input = Console.ReadKey();
         }
 
@@ -498,9 +562,9 @@ namespace private_project
             Console.SetCursorPosition(4, 45);
             Console.Write("1.알을 조용히 가져가보자");
             Console.SetCursorPosition(4, 47);
-            Console.Write("2.{0}이 좋아하는 풀을 줘서 경계를 풀어보자", a1.name);
+            Console.Write("2.{0}가 좋아하는 풀을 줘서 경계를 풀어보자", a1.name);
             Console.SetCursorPosition(4, 49);
-            Console.Write("3.도망가자.");
+            Console.Write("3.아이템을 써서 피를 회복하자.");
         }
 
         static void PrintBattleCursorPosition()
@@ -575,7 +639,7 @@ namespace private_project
                     albert.PrintPlayer();
                     Console.SetCursorPosition(4, 43);
                     Console.WriteLine("공룡과의 싸움에서 승리하고 화석을 20얻었다.");
-                    albert.fossils += 20;
+                    albert.fossils += 30;
                     Task.Delay(1000).Wait();
                     alive = true;
                     albert.eggCount++;
@@ -616,5 +680,90 @@ namespace private_project
                 Task.Delay(1000).Wait();
             }
         }
+
+        static void Drawleap()
+        {
+            Console.SetCursorPosition(30, 9);
+            Console.WriteLine("         .--,                                         ");
+            Console.SetCursorPosition(30, 10);
+            Console.WriteLine("     , ,--,--,:,                                      ");
+            Console.SetCursorPosition(30, 11);
+            Console.WriteLine("      ,:~-,,,.                                        ");
+            Console.SetCursorPosition(30, 12);
+            Console.WriteLine("    ...~~,,-~,,-.                                     ");
+            Console.SetCursorPosition(30, 13);
+            Console.WriteLine("     ...-;~~:~:~-.                                    ");
+            Console.SetCursorPosition(30, 14);
+            Console.WriteLine("   .  .,-~~-,:,~--,                                   ");
+            Console.SetCursorPosition(30, 15);
+            Console.WriteLine("   .......--~.  .~, ~;,                               ");
+            Console.SetCursorPosition(30, 16);
+            Console.WriteLine("      -;.:~-~-~.,~-;-.,-                              ");
+            Console.SetCursorPosition(30, 17);
+            Console.WriteLine("        ,~:~::. ,~,,.                                 ");
+            Console.SetCursorPosition(30, 18);
+            Console.WriteLine("       .,,,,,-~                                       ");
+            Console.SetCursorPosition(30, 19);
+            Console.WriteLine("              -    ,.  ,.                             ");
+            Console.SetCursorPosition(30, 20);
+            Console.WriteLine("        ..~..  ., ~- . ...                  .         ");
+            Console.SetCursorPosition(30, 21);
+            Console.WriteLine("  ,-,.,;,...  .:~.~;~!,                               ");
+            Console.SetCursorPosition(30, 22);
+            Console.WriteLine("   . .,,~:;:~-~~--,--;:~-..                           ");
+            Console.SetCursorPosition(30, 23);
+            Console.WriteLine("       .,-~~~,,~-,,.,,,,,,-                           ");
+            Console.SetCursorPosition(30, 24);
+            Console.WriteLine("         .......,-                                    ");
+            Console.SetCursorPosition(30, 25);
+            Console.WriteLine("                .:-                                   ");
+            Console.SetCursorPosition(30, 26);
+            Console.WriteLine("                 ~~                                   ");
+            Console.SetCursorPosition(30, 27);
+            Console.WriteLine("                  :                                   ");
+            Console.SetCursorPosition(30, 28);
+            Console.WriteLine("             ,--.,~-,-.     -~,.,.                    ");
+            Console.SetCursorPosition(30, 29);
+            Console.WriteLine("             -::-.:~:~~,, ,,;:,..   .,                ");
+            Console.SetCursorPosition(30, 30);
+            Console.WriteLine("             .~~:-. ~.     ~!,,,,-.  ,                ");
+            Console.SetCursorPosition(30, 31);
+            Console.WriteLine("                   :,.   ,~  .~, -.                   ");
+            Console.SetCursorPosition(30, 32);
+            Console.WriteLine("      ...,,~;;::~~..,~~.,---                          ");
+            Console.SetCursorPosition(30, 33);
+            Console.WriteLine("    -,~:------.     .~,                               ");
+            Console.SetCursorPosition(30, 34);
+            Console.WriteLine("    ....             --                               ");
+            Console.SetCursorPosition(30, 35);
+            Console.WriteLine("                     ,-,                              ");
+            Console.SetCursorPosition(30, 36);
+            Console.WriteLine("                      ~,                              ");
+            Console.SetCursorPosition(30, 37);
+            Console.WriteLine("                      --                              ");
+            Console.SetCursorPosition(30, 38);
+            Console.WriteLine("                      .:,                             ");
+            Console.SetCursorPosition(30, 39);
+            Console.WriteLine("                       :~,   .                        ");
+            Console.SetCursorPosition(30, 40);
+            Console.WriteLine("            .          .,- .,.,.     ,..              ");
+            Console.SetCursorPosition(30, 41);
+            Console.WriteLine("  -:::~!,!,,~.  -, .,-,.!-  !;,:~,.~,.;-              ");
+            Console.SetCursorPosition(30, 42);
+            Console.WriteLine("     .~-~~:~ .,!:......,~,-~~~~,.--                   ");
+            Console.SetCursorPosition(30, 43);
+            Console.WriteLine("              .~:;~~;:::!-  .,, .,,. .                ");
+            Console.SetCursorPosition(30, 44);
+            Console.WriteLine("               .,,.,;!~;:. -.~~---~,.-,               ");
+            Console.SetCursorPosition(30, 45);
+            Console.WriteLine("                     ..-~,.,~:~,--~-~::~:~:::-        ");
+            Console.SetCursorPosition(30, 46);
+            Console.WriteLine("                      ,;.                  .,~~~~~~:, ");
+            Console.SetCursorPosition(30, 47);
+            Console.WriteLine("                      ~;,                             ");
+            Console.SetCursorPosition(30, 48);
+            Console.WriteLine("                      ~:-                             ");
+        }
+                                  
     }
 }
