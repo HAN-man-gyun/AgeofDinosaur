@@ -79,22 +79,24 @@ namespace private_project
             MakeUI();
             Console.SetCursorPosition(4, 43);
             Console.Write("알버트박사는 알을 찾아서 모험을 떠납니다....");
-
+            Console.SetCursorPosition(4, 45);
+            Console.Write("진행도를 확인하고 싶다면 R키를 입력해주세요");
+            Console.SetCursorPosition(4, 47);
+            Console.Write("진행도를 보지않고 계속 진행하시려면 Enter를 눌러주세요");
+           
         }
 
-        public void Synopsis ()
+        public void Synopsis()
         {
             Console.SetCursorPosition(5, 1);
             Console.Write("2200년 천재과학자 알버트는 타임머신 개발에 성공했다.");
             Console.SetCursorPosition(5, 3);
             Console.Write("알버트은 현대에 모든 공룡을 복원하기위해 백악기로 넘어가 공룡알을 가져오기로했다.");
             Console.SetCursorPosition(5, 5);
-            Console.Write("타임머신에 몸을 맡겨 시공의폭풍속을 넘어가던 중 타임머신이 흔들리기 시작했다. ");
+            Console.Write("타임머신을 타고 백악기로 날아간후 알버트는 알을 모으는것이 쉽지않다는것을 깨달았다.");
             Console.SetCursorPosition(5, 7);
-            Console.Write("시공간 폭풍을 만난것이다.폭풍을 뚫고 백악기로 도착했지만 엔진이 고장나 제대로 된 착륙을 할수없었다.");
-            Console.SetCursorPosition(5, 9); 
-            Console.Write("결국 타임머신은 부서지고 부품들이 여기저기로 흩어져버렸다.");
-            Console.SetCursorPosition(5, 11);
+            Console.Write("금방이라도 터질거같은 화산과 우호적이지 않은 원시인, 그리고 거대한 공룡들까지 어느하나 쉽지않았다.");
+            Console.SetCursorPosition(5, 9);
             Console.Write("무시무시한 공룡들이 사는 세상에서 알버트는 모든 공룡알과 부품을 수집해서 현실로 돌아갈수있을까?");
 
             Console.SetCursorPosition(10, 20);
@@ -193,9 +195,9 @@ namespace private_project
             Console.WriteLine("  __/,%\\,%\\,%\\,%\\,%\\,%/XXXXX\\_        __/. ./%\\,%\\,%\\,%\\,%\\,%\\,%\\,%\\,%\\,%\\");
             Console.SetCursorPosition(45, 46);
             Console.WriteLine(" /%,\\%,\\%,\\%,\\%,\\%,\\%/XXXXXXXX\\      /. . ./%,\\%,\\%,\\%,\\%,\\%,\\%,\\%,\\%,\\%,\\");
-            
 
-                        ConsoleKeyInfo input1 = Console.ReadKey();
+
+            ConsoleKeyInfo input1 = Console.ReadKey();
         }
         public void Printstate(Player albert)
         {
@@ -244,6 +246,7 @@ namespace private_project
 
         public void PrintStartScreen()
         {
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.SetCursorPosition(22, 4);
             Console.WriteLine("d888888b db   db d88888b       .d8b.   d888b  d88888b       .d88b.  d88888b ");
             Console.SetCursorPosition(22, 5);
@@ -275,7 +278,8 @@ namespace private_project
             Console.SetCursorPosition(45, 33);
             Console.WriteLine(" Press The Key To Start!");
 
-            Console.SetCursorPosition(10,19);
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.SetCursorPosition(10, 19);
             Console.WriteLine("             $#########  ");
             Console.SetCursorPosition(10, 20);
             Console.WriteLine("            *#;;########,");
@@ -310,7 +314,7 @@ namespace private_project
             Console.SetCursorPosition(10, 35);
             Console.WriteLine("      ; *,   ; *,        ");
 
-           
+            Console.ResetColor();
         }
 
 
@@ -318,17 +322,17 @@ namespace private_project
         {
             Console.SetCursorPosition(34, 4);
             Console.WriteLine("######## ##     ## ########    ######## ##    ## ########  ");
-            Console.SetCursorPosition(34, 5); 
+            Console.SetCursorPosition(34, 5);
             Console.WriteLine("   ##    ##     ## ##          ##       ###   ## ##     ## ");
-            Console.SetCursorPosition(34, 6); 
+            Console.SetCursorPosition(34, 6);
             Console.WriteLine("   ##    ##     ## ##          ##       ####  ## ##     ## ");
-            Console.SetCursorPosition(34, 7); 
+            Console.SetCursorPosition(34, 7);
             Console.WriteLine("   ##    ######### ######      ######   ## ## ## ##     ## ");
-            Console.SetCursorPosition(34, 8); 
+            Console.SetCursorPosition(34, 8);
             Console.WriteLine("   ##    ##     ## ##          ##       ##  #### ##     ## ");
-            Console.SetCursorPosition(34, 9); 
+            Console.SetCursorPosition(34, 9);
             Console.WriteLine("   ##    ##     ## ##          ##       ##   ### ##     ## ");
-            Console.SetCursorPosition(34, 10); 
+            Console.SetCursorPosition(34, 10);
             Console.WriteLine("   ##    ##     ## ########    ######## ##    ## ########  ");
 
 
@@ -338,45 +342,45 @@ namespace private_project
             Console.WriteLine("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@$;;;;;!!!;#");
             Console.SetCursorPosition(33, 14);
             Console.WriteLine("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*!!!.          .@");
-            Console.SetCursorPosition(33, 15); 
+            Console.SetCursorPosition(33, 15);
             Console.WriteLine("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*!      !!~      .,,@");
-            Console.SetCursorPosition(33, 16); 
+            Console.SetCursorPosition(33, 16);
             Console.WriteLine("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@$*            .*:, .,,.$@");
-            Console.SetCursorPosition(33, 17); 
+            Console.SetCursorPosition(33, 17);
             Console.WriteLine("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*         .        ~*~,.!@@");
-            Console.SetCursorPosition(33, 18); 
+            Console.SetCursorPosition(33, 18);
             Console.WriteLine("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#;       .,    ...       *=@@@");
-            Console.SetCursorPosition(33, 19); 
+            Console.SetCursorPosition(33, 19);
             Console.WriteLine("@@@@@@@@@@@@@@@@@@@@@@@$$$$##~        ,        ,     ..#@@@@");
-            Console.SetCursorPosition(33, 20); 
+            Console.SetCursorPosition(33, 20);
             Console.WriteLine("@@@@@@@@@@@@@@@@@@@#$     :;          ,.     ...  ..,-@@@@@@");
-            Console.SetCursorPosition(33, 21); 
+            Console.SetCursorPosition(33, 21);
             Console.WriteLine("@@@@@@@@@@@@@@@@@#,.-#@@@#.             .,,,.  ..,,,@@@@@@@@");
-            Console.SetCursorPosition(33, 22); 
+            Console.SetCursorPosition(33, 22);
             Console.WriteLine("@@@@@@@@@@@@@@@=,#@@@@@@@-.     .:$#.      ...,,,;@@@@@@@@@@");
-            Console.SetCursorPosition(33, 23); 
+            Console.SetCursorPosition(33, 23);
             Console.WriteLine("@@@@@@@@@@@@@@@@@@@@@@@~,-**..,#:$,,,  . .,,,,-@@@@@@@@@@@@@");
-            Console.SetCursorPosition(33, 24); 
+            Console.SetCursorPosition(33, 24);
             Console.WriteLine("@@@@@@@@@@@@@@@@@@@@@@@@$---@~@.,,,,,,,,,,.*@@@@@@@@@@@@@@@@");
-            Console.SetCursorPosition(33, 25); 
+            Console.SetCursorPosition(33, 25);
             Console.WriteLine("@@@@@@@@@@@@@@@@@@@$,..  $@#:~~;$,,,,,.==-#@@@@@@@@@@@@@@@@@");
-            Console.SetCursorPosition(33, 26); 
+            Console.SetCursorPosition(33, 26);
             Console.WriteLine("@@@@@@@@@@@@@@@@$,,.. .=*!,,:=:::;$##@;  .#@@@@@@@@@@@@@@@@@");
-            Console.SetCursorPosition(33, 27); 
+            Console.SetCursorPosition(33, 27);
             Console.WriteLine("@@@@@@@@@@@@@@!,....$-#,....#@@@@@@@@#  ~@@@@@@@@@@@@@@@@@@@");
-            Console.SetCursorPosition(33, 28); 
+            Console.SetCursorPosition(33, 28);
             Console.WriteLine("@@@@@@@@@@@@=,.......,....*@@@@@@@@@- *#@@@@@@@@@@@@@@@@@@@@");
-            Console.SetCursorPosition(33, 29); 
+            Console.SetCursorPosition(33, 29);
             Console.WriteLine("@@@@@@@@@@!-......... ..=@@@@@@@@@-*$@@@@@@@@@@@@@@@@@@@@@@@");
-            Console.SetCursorPosition(33, 30); 
+            Console.SetCursorPosition(33, 30);
             Console.WriteLine("@@@@@@@@:,.....,.....=$@@@@@@@@@@#@@@@@@@@@@@@@@@@@@@@@@@@@@");
-            Console.SetCursorPosition(33, 31); 
+            Console.SetCursorPosition(33, 31);
             Console.WriteLine("@@@@$:-*=:..-*~..-=#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-            Console.SetCursorPosition(33, 32); 
+            Console.SetCursorPosition(33, 32);
             Console.WriteLine("@@==#@@:.-*@!,~*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-            Console.SetCursorPosition(33, 33); 
+            Console.SetCursorPosition(33, 33);
             Console.WriteLine("@@@@$:!*@@=~!@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-            Console.SetCursorPosition(33, 34); 
+            Console.SetCursorPosition(33, 34);
             Console.WriteLine("@#$*#@@@@@$@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
 
 
@@ -517,6 +521,317 @@ namespace private_project
             Console.WriteLine("       X        _X      *    X      **         **             x   **    *  X  ");
             Console.SetCursorPosition(20, 15);
             Console.WriteLine("      _X                    _X           x                *          x     X_ ");
+        }
+
+
+        public void PrintEgg(int wid, int hei)
+        {
+            Console.SetCursorPosition(wid, hei);
+            Console.Write("          !!!!!!!!          ");
+            Console.SetCursorPosition(wid, hei + 1);
+            Console.Write("        !!        !!        ");
+            Console.SetCursorPosition(wid, hei + 2);
+            Console.Write("      !!▒▒▒▒        !!     ");
+            Console.SetCursorPosition(wid, hei + 3);
+            Console.Write("    !!▒▒▒▒▒▒      ▒▒▒▒!!    ");
+            Console.SetCursorPosition(wid, hei + 4);
+            Console.Write("    !!▒▒▒▒▒▒      ▒▒▒▒!!    ");
+            Console.SetCursorPosition(wid, hei + 5);
+            Console.Write("  !!  ▒▒▒▒        ▒▒▒▒▒▒!!  ");
+            Console.SetCursorPosition(wid, hei + 6);
+            Console.Write("  !!                ▒▒▒▒!!  ");
+            Console.SetCursorPosition(wid, hei + 7);
+            Console.Write("!!▒▒      ▒▒▒▒▒▒          !!");
+            Console.SetCursorPosition(wid, hei + 8);
+            Console.Write("!!      ▒▒▒▒▒▒▒▒▒▒        !!");
+            Console.SetCursorPosition(wid, hei + 9);
+            Console.Write("!!      ▒▒▒▒▒▒▒▒▒▒    ▒▒▒▒!!");
+            Console.SetCursorPosition(wid, hei + 10);
+            Console.Write("!!▒▒▒▒  ▒▒▒▒▒▒▒▒▒▒  ▒▒▒▒▒▒!!");
+            Console.SetCursorPosition(wid, hei + 11);
+            Console.Write("  !!▒▒▒▒  ▒▒▒▒▒▒    ▒▒▒▒!!  ");
+            Console.SetCursorPosition(wid, hei + 12);
+            Console.Write("  !!▒▒▒▒            ▒▒▒▒!!  ");
+            Console.SetCursorPosition(wid, hei + 13);
+            Console.Write("    !!▒▒              !!    ");
+            Console.SetCursorPosition(wid, hei + 14);
+            Console.Write("      !!!!        !!!!      ");
+            Console.SetCursorPosition(wid, hei + 15);
+            Console.Write("          !!!!!!!!          ");
+        }
+
+        public void PrintEggs(Player albert)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            PrintEgg(3, 1);
+            Console.ResetColor();
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            PrintEgg(32, 1);
+            Console.ResetColor();
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            PrintEgg(62, 1);
+            Console.ResetColor();
+            Console.ForegroundColor = ConsoleColor.Green;
+            PrintEgg(92, 1);
+            Console.ResetColor();
+            Console.ForegroundColor = ConsoleColor.Cyan; ;
+            PrintEgg(3, 19);
+            Console.ResetColor();
+            Console.ForegroundColor = ConsoleColor.Blue;
+            PrintEgg(32, 19);
+            Console.ResetColor();
+            Console.ForegroundColor = ConsoleColor.DarkBlue;
+            PrintEgg(62, 19);
+            Console.ResetColor();
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            PrintEgg(92, 19);
+            Console.ResetColor();
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            PrintEgg(18, 37);
+            Console.ResetColor();
+            Console.ForegroundColor = ConsoleColor.White;
+            PrintEgg(78, 37);
+            Console.ResetColor();
+
+
+            switch (albert.eggCount)
+            {
+                case 1:
+                    Console.SetCursorPosition(9, 17);
+                    Console.WriteLine("트리케라톱스의 알 ");
+                    Console.SetCursorPosition(35, 17);
+                    Console.WriteLine(" ? ? ? ? ? ? ? ?의 알 ");
+                    Console.SetCursorPosition(68, 17);
+                    Console.WriteLine(" ? ? ? ? ?의 알 ");
+                    Console.SetCursorPosition(95, 17);
+                    Console.WriteLine(" ? ? ? ? ? ? ? ?의 알 ");
+                    Console.SetCursorPosition(8, 35);
+                    Console.WriteLine(" ? ? ? ? ? ? ?의 알 ");
+                    Console.SetCursorPosition(36, 35);
+                    Console.WriteLine(" ? ? ? ? ? ? ?의 알 ");
+                    Console.SetCursorPosition(67, 35);
+                    Console.WriteLine(" ? ? ? ? ? ? ?의 알 ");
+                    Console.SetCursorPosition(97, 35);
+                    Console.WriteLine(" ? ? ? ? ? ?의 알 ");
+                    Console.SetCursorPosition(25, 53);
+                    Console.WriteLine(" ? ? ? ? ?의 알 ");
+                    Console.SetCursorPosition(82, 53);
+                    Console.WriteLine(" ? ? ? ? ? ? ? ?의 알 ");
+                    break;
+                case 2:
+                    Console.SetCursorPosition(9, 17);
+                    Console.WriteLine("트리케라톱스의 알 ");
+                    Console.SetCursorPosition(35, 17);
+                    Console.WriteLine("브라키오사우루스의 알 ");
+                    Console.SetCursorPosition(68, 17);
+                    Console.WriteLine(" ? ? ? ? ?의 알 ");
+                    Console.SetCursorPosition(95, 17);
+                    Console.WriteLine(" ? ? ? ? ? ? ? ?의 알 ");
+                    Console.SetCursorPosition(8, 35);
+                    Console.WriteLine(" ? ? ? ? ? ? ?의 알 ");
+                    Console.SetCursorPosition(36, 35);
+                    Console.WriteLine(" ? ? ? ? ? ? ?의 알 ");
+                    Console.SetCursorPosition(67, 35);
+                    Console.WriteLine(" ? ? ? ? ? ? ?의 알 ");
+                    Console.SetCursorPosition(97, 35);
+                    Console.WriteLine(" ? ? ? ? ? ?의 알 ");
+                    Console.SetCursorPosition(25, 53);
+                    Console.WriteLine(" ? ? ? ? ?의 알 ");
+                    Console.SetCursorPosition(82, 53);
+                    Console.WriteLine(" ? ? ? ? ? ? ? ?의 알 ");
+
+                    break;
+                case 3:
+                    Console.SetCursorPosition(9, 17);
+                    Console.WriteLine("트리케라톱스의 알 ");
+                    Console.SetCursorPosition(35, 17);
+                    Console.WriteLine("브라키오사우루스의 알 ");
+                    Console.SetCursorPosition(68, 17);
+                    Console.WriteLine("벨로시랩터의 알 ");
+                    Console.SetCursorPosition(95, 17);
+                    Console.WriteLine(" ? ? ? ? ? ? ? ?의 알 ");
+                    Console.SetCursorPosition(8, 35);
+                    Console.WriteLine(" ? ? ? ? ? ? ?의 알 ");
+                    Console.SetCursorPosition(36, 35);
+                    Console.WriteLine(" ? ? ? ? ? ? ?의 알 ");
+                    Console.SetCursorPosition(67, 35);
+                    Console.WriteLine(" ? ? ? ? ? ? ?의 알 ");
+                    Console.SetCursorPosition(97, 35);
+                    Console.WriteLine(" ? ? ? ? ? ?의 알 ");
+                    Console.SetCursorPosition(25, 53);
+                    Console.WriteLine(" ? ? ? ? ?의 알 ");
+                    Console.SetCursorPosition(82, 53);
+                    Console.WriteLine(" ? ? ? ? ? ? ? ?의 알 ");
+
+                    break;
+                case 4:
+                    Console.SetCursorPosition(9, 17);
+                    Console.WriteLine("트리케라톱스의 알 ");
+                    Console.SetCursorPosition(35, 17);
+                    Console.WriteLine("브라키오사우루스의 알 ");
+                    Console.SetCursorPosition(68, 17);
+                    Console.WriteLine("벨로시랩터의 알 ");
+                    Console.SetCursorPosition(95, 17);
+                    Console.WriteLine("파라사우롤로푸스의 알 ");
+                    Console.SetCursorPosition(8, 35);
+                    Console.WriteLine(" ? ? ? ? ? ? ?의 알 ");
+                    Console.SetCursorPosition(36, 35);
+                    Console.WriteLine(" ? ? ? ? ? ? ?의 알 ");
+                    Console.SetCursorPosition(67, 35);
+                    Console.WriteLine(" ? ? ? ? ? ? ?의 알 ");
+                    Console.SetCursorPosition(97, 35);
+                    Console.WriteLine(" ? ? ? ? ? ?의 알 ");
+                    Console.SetCursorPosition(25, 53);
+                    Console.WriteLine(" ? ? ? ? ?의 알 ");
+                    Console.SetCursorPosition(82, 53);
+                    Console.WriteLine(" ? ? ? ? ? ? ? ?의 알 ");
+
+
+                    break;
+                case 5:
+                    Console.SetCursorPosition(9, 17);
+                    Console.WriteLine("트리케라톱스의 알 ");
+                    Console.SetCursorPosition(35, 17);
+                    Console.WriteLine("브라키오사우루스의 알 ");
+                    Console.SetCursorPosition(68, 17);
+                    Console.WriteLine("벨로시랩터의 알 ");
+                    Console.SetCursorPosition(95, 17);
+                    Console.WriteLine("파라사우롤로푸스의 알 ");
+                    Console.SetCursorPosition(8, 35);
+                    Console.WriteLine("스테고사우루스의 알 ");
+                    Console.SetCursorPosition(36, 35);
+                    Console.WriteLine(" ? ? ? ? ? ? ?의 알 ");
+                    Console.SetCursorPosition(67, 35);
+                    Console.WriteLine(" ? ? ? ? ? ? ?의 알 ");
+                    Console.SetCursorPosition(97, 35);
+                    Console.WriteLine(" ? ? ? ? ? ?의 알 ");
+                    Console.SetCursorPosition(25, 53);
+                    Console.WriteLine(" ? ? ? ? ?의 알 ");
+                    Console.SetCursorPosition(82, 53);
+                    Console.WriteLine(" ? ? ? ? ? ? ? ?의 알 ");
+
+                    break;
+                case 6:
+                    Console.SetCursorPosition(9, 17);
+                    Console.WriteLine("트리케라톱스의 알 ");
+                    Console.SetCursorPosition(35, 17);
+                    Console.WriteLine("브라키오사우루스의 알 ");
+                    Console.SetCursorPosition(68, 17);
+                    Console.WriteLine("벨로시랩터의 알 ");
+                    Console.SetCursorPosition(95, 17);
+                    Console.WriteLine("파라사우롤로푸스의 알 ");
+                    Console.SetCursorPosition(8, 35);
+                    Console.WriteLine("스테고사우루스의 알 ");
+                    Console.SetCursorPosition(36, 35);
+                    Console.WriteLine("티라노사우루스의 알 ");
+                    Console.SetCursorPosition(67, 35);
+                    Console.WriteLine(" ? ? ? ? ? ? ?의 알 ");
+                    Console.SetCursorPosition(97, 35);
+                    Console.WriteLine(" ? ? ? ? ? ?의 알 ");
+                    Console.SetCursorPosition(25, 53);
+                    Console.WriteLine(" ? ? ? ? ?의 알 ");
+                    Console.SetCursorPosition(82, 53);
+                    Console.WriteLine(" ? ? ? ? ? ? ? ?의 알 ");
+
+
+                    break;
+                case 7:
+                    Console.SetCursorPosition(9, 17);
+                    Console.WriteLine("트리케라톱스의 알 ");
+                    Console.SetCursorPosition(35, 17);
+                    Console.WriteLine("브라키오사우루스의 알 ");
+                    Console.SetCursorPosition(68, 17);
+                    Console.WriteLine("벨로시랩터의 알 ");
+                    Console.SetCursorPosition(95, 17);
+                    Console.WriteLine("파라사우롤로푸스의 알 ");
+                    Console.SetCursorPosition(8, 35);
+                    Console.WriteLine("스테고사우루스의 알 ");
+                    Console.SetCursorPosition(36, 35);
+                    Console.WriteLine("티라노사우루스의 알 ");
+                    Console.SetCursorPosition(67, 35);
+                    Console.WriteLine("안킬로사우루스의 알 ");
+                    Console.SetCursorPosition(97, 35);
+                    Console.WriteLine(" ? ? ? ? ? ?의 알 ");
+                    Console.SetCursorPosition(25, 53);
+                    Console.WriteLine(" ? ? ? ? ?의 알 ");
+                    Console.SetCursorPosition(82, 53);
+                    Console.WriteLine(" ? ? ? ? ? ? ? ?의 알 ");
+
+                    break;
+                case 8:
+                    Console.SetCursorPosition(9, 17);
+                    Console.WriteLine("트리케라톱스의 알 ");
+                    Console.SetCursorPosition(35, 17);
+                    Console.WriteLine("브라키오사우루스의 알 ");
+                    Console.SetCursorPosition(68, 17);
+                    Console.WriteLine("벨로시랩터의 알 ");
+                    Console.SetCursorPosition(95, 17);
+                    Console.WriteLine("파라사우롤로푸스의 알 ");
+                    Console.SetCursorPosition(8, 35);
+                    Console.WriteLine("스테고사우루스의 알 ");
+                    Console.SetCursorPosition(36, 35);
+                    Console.WriteLine("티라노사우루스의 알 ");
+                    Console.SetCursorPosition(67, 35);
+                    Console.WriteLine("안킬로사우루스의 알 ");
+                    Console.SetCursorPosition(97, 35);
+                    Console.WriteLine("알로사우루스의 알 ");
+                    Console.SetCursorPosition(25, 53);
+                    Console.WriteLine(" ? ? ? ? ?의 알 ");
+                    Console.SetCursorPosition(82, 53);
+                    Console.WriteLine(" ? ? ? ? ? ? ? ?의 알 ");
+
+
+                    break;
+                case 9:
+                    Console.SetCursorPosition(9, 17);
+                    Console.WriteLine("트리케라톱스의 알 ");
+                    Console.SetCursorPosition(35, 17);
+                    Console.WriteLine("브라키오사우루스의 알 ");
+                    Console.SetCursorPosition(68, 17);
+                    Console.WriteLine("벨로시랩터의 알 ");
+                    Console.SetCursorPosition(95, 17);
+                    Console.WriteLine("파라사우롤로푸스의 알 ");
+                    Console.SetCursorPosition(8, 35);
+                    Console.WriteLine("스테고사우루스의 알 ");
+                    Console.SetCursorPosition(36, 35);
+                    Console.WriteLine("티라노사우루스의 알 ");
+                    Console.SetCursorPosition(67, 35);
+                    Console.WriteLine("안킬로사우루스의 알 ");
+                    Console.SetCursorPosition(97, 35);
+                    Console.WriteLine("알로사우르스의 알 ");
+                    Console.SetCursorPosition(25, 53);
+                    Console.WriteLine("프테라노돈의 알 ");
+                    Console.SetCursorPosition(82, 53);
+                    Console.WriteLine(" ? ? ? ? ? ? ? ?의 알 ");
+
+
+                    break;
+                case 10:
+                    Console.SetCursorPosition(9, 17);
+                    Console.WriteLine("트리케라톱스의 알 ");
+                    Console.SetCursorPosition(35, 17);
+                    Console.WriteLine("브라키오사우루스의 알 ");
+                    Console.SetCursorPosition(68, 17);
+                    Console.WriteLine("벨로시랩터의 알 ");
+                    Console.SetCursorPosition(95, 17);
+                    Console.WriteLine("파라사우롤로푸스의 알 ");
+                    Console.SetCursorPosition(8, 35);
+                    Console.WriteLine("스테고사우루스의 알 ");
+                    Console.SetCursorPosition(36, 35);
+                    Console.WriteLine("티라노사우루스의 알 ");
+                    Console.SetCursorPosition(67, 35);
+                    Console.WriteLine("안킬로사우루스의 알 ");
+                    Console.SetCursorPosition(97, 35);
+                    Console.WriteLine("알로사우루스의 알 ");
+                    Console.SetCursorPosition(25, 53);
+                    Console.WriteLine("프테라노돈의 알 ");
+                    Console.SetCursorPosition(82, 53);
+                    Console.WriteLine("기가노토사우루스의 알 ");
+                    break;
+
+                Console.Clear();
+            }
+
         }
     }
 }

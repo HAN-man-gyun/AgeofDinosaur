@@ -915,18 +915,18 @@ namespace private_project
                                                 {
                                                     if (albert.fossils >= items[0].price)
                                                     {
-                                                        Console.SetCursorPosition(4, 43);
-                                                        Console.Write("휴먼! 탁월한선택입니다.!");
-                                                        Console.SetCursorPosition(4, 45);
-                                                        Console.Write("아이템구매에 성공했습니다!");
-                                                        albert.fossils -= items[6].price;
-                                                        albert.playerInventory.Add("공룡캣닢");
                                                         Console.Clear();
                                                         UI1.MakeUI();
                                                         PrintMerchant();
                                                         PrintShop();
                                                         PrintCursorPosition();
                                                         UI1.Printstate(albert);
+                                                        Console.SetCursorPosition(4, 43);
+                                                        Console.Write("휴먼! 탁월한선택입니다.!");
+                                                        Console.SetCursorPosition(4, 45);
+                                                        Console.Write("아이템구매에 성공했습니다!");
+                                                        albert.fossils -= items[6].price;
+                                                        albert.playerInventory.Add("공룡캣닢");
                                                         Task.Delay(1000).Wait();
                                                         Console.SetCursorPosition(33, 7);
                                                         buyCheck = true;
@@ -1004,11 +1004,9 @@ namespace private_project
                 if(closeShop == true)
                 {
                     Console.SetCursorPosition(4, 43);
-                    Console.Write("떠나기전에 조그만선물을 드리겠습니다.");
+                    Console.Write("앞으로도 많은 이용 부탁드리겠습니다. 삐빅!");
                     Console.SetCursorPosition(4, 45);
-                    Console.Write("많은 이용 부탁드리겠습니다. 삐빅!");
-                    Console.SetCursorPosition(4, 47);
-                    Console.Write("공룡알 하나를 얻었다!!!");
+                    Console.Write("                                     ");
                     Task.Delay(1000).Wait();
                     break;
                 }

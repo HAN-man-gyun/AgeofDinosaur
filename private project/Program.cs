@@ -21,13 +21,9 @@ namespace private_project
             UI UI1 = new UI();
             //플레이어 생성,초기화
             Player albert = new Player();
-            albert.IntiailizePlayer("알버트", "주먹도끼", 20, 400, 300, 10, 150, 0);
-
-           
-
-
-
-
+            albert.IntiailizePlayer("알버트", "주먹도끼", 30, 400, 400, 10, 150, 1);
+            //상점 on 변수
+            bool shopOn = true; 
             //공룡 초기화
             List<dinosaur> dinosaurs = new List<dinosaur>();
             dinosaur normal1 = new dinosaur();
@@ -93,26 +89,40 @@ namespace private_project
 
             UI1.MakeUI();
             UI1.Synopsis();
-
-           
-
             //UI출력
             UI1.MakeUI();
-            
-
             while (true)
             {
+              
                 temp = rnd.Next(0, 101);
                 tempPrimitive = rnd.Next(0, 2);
                 tempDinoBattle = rnd.Next(0, 101);
+
                 //기본스크립트 출력
+                Console.Clear();
                 UI1.PrintRoundStart();
                 UI1.PrintStage(stage, round);
                 UI1.Printstate(albert);
                 UI1.PrintDesert();
+                
+                ConsoleKeyInfo inputy = Console.ReadKey();
+                if (inputy.KeyChar == 'R')
+                {
+                    Console.Clear();
+                    UI1.PrintEggs(albert);
+                    ConsoleKeyInfo inputx = Console.ReadKey();
+                    Console.Clear();
+                    UI1.PrintRoundStart();
+                    UI1.PrintStage(stage, round);
+                    UI1.Printstate(albert);
+                    UI1.PrintDesert();
+                    Task.Delay(1000).Wait();
+                }
+               
+
                 Task.Delay(1000).Wait();
-                if (round != 1 && albert.eggCount % 3 != 0)
-                {// 라운드가 1이 아니면서 eggCount가 3의 배수가 아니라면
+                if (!(stage%4 ==0))
+                {// 스테이지가 4의 배수가 아니면서
                     if (temp <= 50)
                     {
                         tempDinoBattle = rnd.Next(0, 101);
@@ -157,7 +167,7 @@ namespace private_project
                         }
                     }
                 }
-                else if (round == 1)//라운드가 1이라면
+                else if (stage %4 ==0)//라운드가 1이라면
                 {
                     Console.Clear();
                     UI1.MakeUI();
@@ -171,26 +181,16 @@ namespace private_project
                     /* albert.PrintInventory();*/
                     shop.PrintCursorPosition();
                     shop.Buy(UI1,albert);
-                    albert.eggCount++;
+                    shopOn = false;
                     Console.ReadLine();
                 }
-                else if (albert.eggCount % 3 == 0)//알의 갯수가 3의 배수라면
-                {
-                    //보스공룡과의 전투
-                    live = BattleDino(dinosaurs[dinoIdx], ref albert, ref UI1, stage, round, tempDinoBattle);
-                    round++;
-                    dinoIdx++;
-                    if (albert.hp <= 0)
-                    {
-                        Console.WriteLine("게임에서 패배했습니다. 다시 도전해주세요.");
-                        break;
-                    }
-                }
-                if (albert.eggCount %4==0)
+                if (albert.eggCount % 4 == 0)
                 {
                     stage++;
                     round = 1;
+                    shopOn = true;
                 }
+
 
                 if (albert.eggCount == 11)
                 {
@@ -341,9 +341,10 @@ namespace private_project
                                                 UI1.Printstate(albert);
                                                 UI1.PrintDesert();
                                                 Console.SetCursorPosition(4, 43);
-                                                Drawleap();
+                                                Drawleaf(UI1, stage, round, albert);
+                                                Console.SetCursorPosition(4, 43);
                                                 Console.WriteLine("캣잎향이 은은하게 풍깁니다. {0}의 경계심이 풀어졌습니다.", array.name);
-                                                array.friendship += 40;
+                                                array.friendship -= 40;
                                                 albert.playerInventory.RemoveAt(i);
                                                 ConsoleKeyInfo input3 = Console.ReadKey();
                                                 Console.Clear();
@@ -536,7 +537,7 @@ namespace private_project
             Console.WriteLine("원주민들에게 환대를 받고 체력을 회복했으며 화석을 받았다.");
             Task.Delay(800).Wait();
             Console.SetCursorPosition(4, 49);
-            Console.WriteLine("체력이 100회복되고 화석을 20 얻었습니다.");
+            Console.WriteLine("체력이 100회복되고 화석을 30 얻었습니다.");
             albert.hp = albert.hp+100;
             albert.fossils += 30;
             ConsoleKeyInfo input = Console.ReadKey();
@@ -556,7 +557,7 @@ namespace private_project
             Console.WriteLine("화산이 폭발했다!!! 여기저기서 화산재와 파편이 내려오고 있다..");
             Task.Delay(600).Wait();
             Console.SetCursorPosition(4, 47);
-            Console.WriteLine("미래 바이크에 몸을맡기고 간신히 탈출에 성공했다....");
+            Console.WriteLine("자동차에 몸을맡기고 간신히 탈출에 성공했다....");
             Task.Delay(600).Wait();
             albert.hp = albert.hp - 50;
             Console.SetCursorPosition(4, 49);
@@ -694,89 +695,55 @@ namespace private_project
             }
         }
 
-        static void Drawleap()
+        static void Drawleaf(UI UI1, int stage, int round, Player albert)
         {
-            Console.SetCursorPosition(30, 9);
-            Console.WriteLine("         .--,                                         ");
-            Console.SetCursorPosition(30, 10);
-            Console.WriteLine("     , ,--,--,:,                                      ");
-            Console.SetCursorPosition(30, 11);
-            Console.WriteLine("      ,:~-,,,.                                        ");
-            Console.SetCursorPosition(30, 12);
-            Console.WriteLine("    ...~~,,-~,,-.                                     ");
-            Console.SetCursorPosition(30, 13);
-            Console.WriteLine("     ...-;~~:~:~-.                                    ");
-            Console.SetCursorPosition(30, 14);
-            Console.WriteLine("   .  .,-~~-,:,~--,                                   ");
-            Console.SetCursorPosition(30, 15);
-            Console.WriteLine("   .......--~.  .~, ~;,                               ");
-            Console.SetCursorPosition(30, 16);
-            Console.WriteLine("      -;.:~-~-~.,~-;-.,-                              ");
-            Console.SetCursorPosition(30, 17);
-            Console.WriteLine("        ,~:~::. ,~,,.                                 ");
-            Console.SetCursorPosition(30, 18);
-            Console.WriteLine("       .,,,,,-~                                       ");
-            Console.SetCursorPosition(30, 19);
-            Console.WriteLine("              -    ,.  ,.                             ");
-            Console.SetCursorPosition(30, 20);
-            Console.WriteLine("        ..~..  ., ~- . ...                  .         ");
-            Console.SetCursorPosition(30, 21);
-            Console.WriteLine("  ,-,.,;,...  .:~.~;~!,                               ");
-            Console.SetCursorPosition(30, 22);
-            Console.WriteLine("   . .,,~:;:~-~~--,--;:~-..                           ");
-            Console.SetCursorPosition(30, 23);
-            Console.WriteLine("       .,-~~~,,~-,,.,,,,,,-                           ");
-            Console.SetCursorPosition(30, 24);
-            Console.WriteLine("         .......,-                                    ");
-            Console.SetCursorPosition(30, 25);
-            Console.WriteLine("                .:-                                   ");
-            Console.SetCursorPosition(30, 26);
-            Console.WriteLine("                 ~~                                   ");
-            Console.SetCursorPosition(30, 27);
-            Console.WriteLine("                  :                                   ");
-            Console.SetCursorPosition(30, 28);
-            Console.WriteLine("             ,--.,~-,-.     -~,.,.                    ");
-            Console.SetCursorPosition(30, 29);
-            Console.WriteLine("             -::-.:~:~~,, ,,;:,..   .,                ");
-            Console.SetCursorPosition(30, 30);
-            Console.WriteLine("             .~~:-. ~.     ~!,,,,-.  ,                ");
-            Console.SetCursorPosition(30, 31);
-            Console.WriteLine("                   :,.   ,~  .~, -.                   ");
-            Console.SetCursorPosition(30, 32);
-            Console.WriteLine("      ...,,~;;::~~..,~~.,---                          ");
-            Console.SetCursorPosition(30, 33);
-            Console.WriteLine("    -,~:------.     .~,                               ");
-            Console.SetCursorPosition(30, 34);
-            Console.WriteLine("    ....             --                               ");
-            Console.SetCursorPosition(30, 35);
-            Console.WriteLine("                     ,-,                              ");
-            Console.SetCursorPosition(30, 36);
-            Console.WriteLine("                      ~,                              ");
-            Console.SetCursorPosition(30, 37);
-            Console.WriteLine("                      --                              ");
-            Console.SetCursorPosition(30, 38);
-            Console.WriteLine("                      .:,                             ");
-            Console.SetCursorPosition(30, 39);
-            Console.WriteLine("                       :~,   .                        ");
-            Console.SetCursorPosition(30, 40);
-            Console.WriteLine("            .          .,- .,.,.     ,..              ");
-            Console.SetCursorPosition(30, 41);
-            Console.WriteLine("  -:::~!,!,,~.  -, .,-,.!-  !;,:~,.~,.;-              ");
-            Console.SetCursorPosition(30, 42);
-            Console.WriteLine("     .~-~~:~ .,!:......,~,-~~~~,.--                   ");
-            Console.SetCursorPosition(30, 43);
-            Console.WriteLine("              .~:;~~;:::!-  .,, .,,. .                ");
-            Console.SetCursorPosition(30, 44);
-            Console.WriteLine("               .,,.,;!~;:. -.~~---~,.-,               ");
-            Console.SetCursorPosition(30, 45);
-            Console.WriteLine("                     ..-~,.,~:~,--~-~::~:~:::-        ");
-            Console.SetCursorPosition(30, 46);
-            Console.WriteLine("                      ,;.                  .,~~~~~~:, ");
-            Console.SetCursorPosition(30, 47);
-            Console.WriteLine("                      ~;,                             ");
-            Console.SetCursorPosition(30, 48);
-            Console.WriteLine("                      ~:-                             ");
+            Console.Clear();
+            UI1.MakeUI();
+            UI1.PrintStage(stage, round);
+            UI1.Printstate(albert);
+            Console.SetCursorPosition(45, 9);
+            Console.WriteLine("               ,                          ");
+            Console.SetCursorPosition(45, 10);
+            Console.WriteLine("        }`-.   ,          ,               ");
+            Console.SetCursorPosition(45, 11);
+            Console.WriteLine("        \\ \\ '-' \\      .-'{               ");
+            Console.SetCursorPosition(45, 12);
+            Console.WriteLine("        _} .  | ,`\\   /  ' ;    .-;\\      ");
+            Console.SetCursorPosition(45, 13);
+            Console.WriteLine("       {    \\ |    | / `/  '-.,/ ; |      ");
+            Console.SetCursorPosition(45, 14);
+            Console.WriteLine("       { -- -.  '  '`-, .--._.' ;  \\__    ");
+            Console.SetCursorPosition(45, 15);
+            Console.WriteLine("        \\     \\ | '  /  |`.    ;    _,`\\  ");
+            Console.SetCursorPosition(45, 16);
+            Console.WriteLine("         '. '-     ' `_- '.`;  ; ,-`_.-'  ");
+            Console.SetCursorPosition(45, 17);
+            Console.WriteLine("     ,--.  \\    `   /` '--'  `;.` (`  _   ");
+            Console.SetCursorPosition(45, 18);
+            Console.WriteLine("  .--.\\  '._) '-. \\ \\ `-.    ;     `-';|  ");
+            Console.SetCursorPosition(45, 19);
+            Console.WriteLine("  '. -. '         __ '.  ;  ;     _,-' /  ");
+            Console.SetCursorPosition(45, 20);
+            Console.WriteLine("   { __'.\\  ' '-,/; `-'   ';`.- `   .-'   ");
+            Console.SetCursorPosition(45, 21);
+            Console.WriteLine("    '-.  `-._'  | `;     ;`'   .-'`       ");
+            Console.SetCursorPosition(45, 22);
+            Console.WriteLine("      <_ -'   ` .\\  `;  ;     (_.'`\\      ");
+            Console.SetCursorPosition(45, 23);
+            Console.WriteLine("      _.;-\"``\"'-._'. `:;  ___, _.-' |     ");
+            Console.SetCursorPosition(45, 24);
+            Console.WriteLine("  .-'\\'. '.` \\ \\_,_`\\ ;##`   `';  _.'     ");
+            Console.SetCursorPosition(45, 25);
+            Console.WriteLine(" /_'._\\ \\  \\__;#####./###.      \\`        ");
+            Console.SetCursorPosition(45, 26);
+            Console.WriteLine(" \\.' .'`/\"`/ (#######)###::.. _.'         ");
+            Console.SetCursorPosition(45, 27);
+            Console.WriteLine("  '.' .'  ; , |:.  `|()##`\"\"\"`            ");
+            Console.SetCursorPosition(45, 28);
+            Console.WriteLine("    `'-../__/_\\::   /O()()o               ");
+            Console.SetCursorPosition(45, 29);
+            Console.WriteLine("             ()'._.'`()()'                ");
+
         }
-                                  
     }
 }

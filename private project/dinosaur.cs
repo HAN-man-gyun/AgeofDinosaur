@@ -30,6 +30,7 @@ namespace private_project
      
         public void PrintTri()
         {
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.SetCursorPosition(3, 16);
             Console.WriteLine("                      . - ~ ~ ~ - ._                       ");
             Console.SetCursorPosition(3, 17);
@@ -54,9 +55,11 @@ namespace private_project
             Console.WriteLine("                      (  \\_          /  /__                ");
             Console.SetCursorPosition(3, 27);
             Console.WriteLine("                       /___<.         '.___<.              ");
+            Console.ResetColor();
         }
         public void PrintBra()
         {
+            Console.ForegroundColor = ConsoleColor.DarkYellow; 
             Console.SetCursorPosition(6, 10);
             Console.WriteLine("                                                     _   ");
             Console.SetCursorPosition(6, 11);
@@ -95,10 +98,12 @@ namespace private_project
             Console.WriteLine("______.-~=      \\   \\_             /|   |                ");
             Console.SetCursorPosition(6, 28);
             Console.WriteLine("               }______o.            /___'o.              ");
+            Console.ResetColor();
         }
 
         public void PrintRapter()
         {
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.SetCursorPosition(6, 17);
             Console.WriteLine("                            ___......__             _        ");
             Console.SetCursorPosition(6, 18);
@@ -123,10 +128,12 @@ namespace private_project
             Console.WriteLine("                   '='~'          \\_    =                   ");
             Console.SetCursorPosition(6, 28);
             Console.WriteLine("                                   ~~'                       ");
+            Console.ResetColor();
         }
 
         public void PrintPhy()
-        {
+        {   
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.SetCursorPosition(6, 12);
             Console.WriteLine("                                             _          ");
             Console.SetCursorPosition(6, 13);
@@ -161,10 +168,12 @@ namespace private_project
             Console.WriteLine("                '=.    '=:__                            ");
             Console.SetCursorPosition(6, 28);
             Console.WriteLine("                     ==.____~:..                        ");
+            Console.ResetColor();
         }
 
         public void PrintStego()
         {
+            Console.ForegroundColor = ConsoleColor.Cyan;
             Console.SetCursorPosition(6, 15);
             Console.WriteLine("                             .       .                            ");
             Console.SetCursorPosition(6, 16);
@@ -193,11 +202,13 @@ namespace private_project
             Console.WriteLine(" _||_||_ .-`     .-~     /     |        /     |                   ");
             Console.SetCursorPosition(6, 28);
             Console.WriteLine(">_ _ _ _ _ . - ~         |_____|        |_____|                   ");
+            Console.ResetColor();
         }
 
 
         public void PrintTrano()
         {
+            Console.ForegroundColor = ConsoleColor.Blue;
             Console.SetCursorPosition(6, 10);
             Console.WriteLine("                                         *~- --------::    ");
             Console.SetCursorPosition(6, 11);
@@ -244,10 +255,12 @@ namespace private_project
             Console.WriteLine("                        ;ˎ*    ..!                         ");
             Console.SetCursorPosition(6, 32);
             Console.WriteLine("                        !;=;~  .;*;;                       ");
+            Console.ResetColor();
         }
 
         public void PrintAlo()
         {
+            Console.ForegroundColor = ConsoleColor.DarkBlue;
             Console.SetCursorPosition(6, 10);
             Console.WriteLine("                                              ____        ");
             Console.SetCursorPosition(6, 11);
@@ -290,10 +303,12 @@ namespace private_project
             Console.WriteLine("                        )  \\                              ");
             Console.SetCursorPosition(6, 30);
             Console.WriteLine("                  /,`--'~\\--'~\\                           ");
+            Console.ResetColor();
         }
 
         public void PrintAnkilo()
         {
+            Console.ForegroundColor = ConsoleColor.Magenta;
             Console.SetCursorPosition(6, 15);
             Console.WriteLine("                      /~~~~~~~~~~~~\\_                ");
             Console.SetCursorPosition(6, 16);
@@ -318,11 +333,13 @@ namespace private_project
             Console.WriteLine("                              \\  \\          \\  \\   ");
             Console.SetCursorPosition(6, 26);
             Console.WriteLine("                              <\"_V_\">        <\"_V_\"> ");
+            Console.ResetColor();
         }
       
      
         public void PrintPtera()
         {
+            Console.ForegroundColor= ConsoleColor.DarkGray;
             Console.SetCursorPosition(6, 15);
             Console.WriteLine("                           <\\              _                ");
             Console.SetCursorPosition(6, 16);
@@ -357,11 +374,13 @@ namespace private_project
             Console.WriteLine("                          \\      WWW                       ");
             Console.SetCursorPosition(6, 31);
             Console.WriteLine("                          MMM                               ");
+            Console.ResetColor();
 
         }
 
         public void PrintGiga()
         {
+            Console.ForegroundColor = ConsoleColor.White;
             Console.SetCursorPosition(4, 8);
             Console.WriteLine("                                               ;::-~--~-:;            ");
             Console.SetCursorPosition(4, 9);
@@ -414,7 +433,7 @@ namespace private_project
             Console.WriteLine("                        -;~-,~-:~!::;:~;;~                            ");
             Console.SetCursorPosition(4, 33);
             Console.WriteLine("                        ~!.----:~*;;;!!;;,                            ");
-
+            Console.ResetColor();
         }
 
         
